@@ -1,0 +1,20 @@
+// API - console client Web
+
+	https://api-console.zoho.in
+
+
+//To Get Access Token And ref token
+resp = invokeurl
+	[
+		url :"https://accounts.zoho.in/oauth/v2/token?code=< permision code >&client_id=< my client id >&client_secret=< my client secret >&grant_type=authorization_code"
+		type :POST
+	];
+	info resp;
+
+
+//To Get Access Token using ref token
+resp = invokeurl
+	[
+		url :"https://accounts.zoho.in/oauth/v2/token?refresh_token=< your ref token >&client_id=< my client id >&client_secret=< my client secret >&scope=Desk.tickets.All&grant_type=refresh_token"
+		type :POST
+	]; 

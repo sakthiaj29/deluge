@@ -1,0 +1,81 @@
+//Current Date 
+		info zoho.currentdate ;
+		info today;
+
+		info "------------------------------------------------------------------------";
+//Average of All Numbers
+		myNumbers={10,15,27,49,32};
+		info myNumbers.average() ;
+		
+		info "------------------------------------------------------------------------";
+		
+//Absolute Value and Power Function
+		num=3;
+		info "absolute value is "+abs(num)+", power 3 is "+power(3, num);
+		
+		info "------------------------------------------------------------------------";
+
+//Smallest Among Two Numbers
+		mycollection={10,5};
+		info mycollection.smallest() ;	
+		
+		info "------------------------------------------------------------------------";
+		
+//Equal when square root of first number and square of second number
+		num1=6;
+		num2=3;
+		if(sqrt(num1)==num2*num2){
+			info "Equal" ;
+		}
+		else{
+			info "Not Equal" ;
+		}	
+
+		info "------------------------------------------------------------------------";
+		
+//Perfect Square
+		num=27;
+		sqnumber=sqrt(num);
+		if(ceil(sqnumber)==floor(sqnumber)){
+			info "Perfect Square" ;
+		}
+		else{
+			info "Not Perfect Square" ;
+		}
+
+		info "------------------------------------------------------------------------";
+		
+//Print WeekDays 
+		day=2;
+		info zoho.currentdate.toStartOfWeek().addDay(day).toString("EEEE");	
+
+		info "------------------------------------------------------------------------";
+
+//Remove the particular value and print without dublicate
+		namelist={"Goblin", "Peter", "Octopus", "Electro", "Lizard", "Sandman", "Goblin"};
+		namelist.removeAll("Octopus");
+		info namelist.distinct() ;
+		
+		info "------------------------------------------------------------------------";
+		
+//Print All City StartsWith Letter S 		
+		cites={"Tokyo", "Shimla", "London", "Syndey", "Boston", "SanDiego", "Kashmir"};
+		for each city in cites
+		{
+			if(city.startsWithIgnoreCase("S")){
+				info city ;
+			}
+		}
+		
+		info "------------------------------------------------------------------------";
+		
+//Palindrome or not
+		name="Madam";
+		revers=name.reverse();
+		if(name.equalsIgnoreCase(revers)){
+			info name+" is Palindrome" ;
+		}
+		else 
+		{
+			info name+" is not Palindrome" ;
+		}		

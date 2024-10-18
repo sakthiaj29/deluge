@@ -1,0 +1,1254 @@
+/*
+ * Author       : sakthimuppudathi7667
+ * Generated on : 17-Oct-2024 09:51:45
+ * Version      : 1.0
+ */
+ application "library management system"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	section Users
+	{
+		icon = "users-2-woman"
+		form User
+		{
+			success message = "User Added Successfully"
+			field alignment = top
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have unique Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have unique Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female","Others"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Profile
+			(
+    			type = image
+				compression = true
+				source  = public_url,file,camera
+				target = same window
+				enable = link, title
+				aspect ratio = square
+				camera = primary
+				preview duration = 5
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-woman"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Users
+		{
+			displayName = "All Users"
+			show all rows from User    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Date_field as "Date"
+				Gender
+				Profile
+				ID
+			)
+			options
+			(
+				icon = "users-2-woman"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							ID
+							Name
+							Email
+							Address
+							Phone_Number as "Phone"
+							Date_field as "Date"
+							Gender
+							Profile
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Name
+							Email
+							Address
+							Phone_Number as "Phone"
+							Date_field as "Date"
+							Gender
+							Profile
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Books
+	{
+		icon = "education-books-46"
+		form Books
+		{
+			success message = "Book Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Title
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="Book Title"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have ISBN
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="ISBN Number"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Author_Name
+			(
+    			type = name
+				displayname = "Author Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Publisher
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="Publisher"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Publishing_Year
+			(
+				type = number
+				displayname = "Publishing Year"
+				maxchar = 4
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Book
+			(
+    			type = upload file
+				browse = local_drive, google_docs, zoho_docs
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "education-books-46"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Books
+		{
+			displayName = "All Books"
+			show all rows from Books    
+			(
+				Title 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Author_Name  as "Author Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Publisher 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Publishing_Year as "Publishing Year"
+				Book
+				ISBN 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				ID
+			)
+			options
+			(
+				icon = "education-books-46"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							ID
+							Title
+							Author_Name as "Author Name"
+							Publisher
+							Publishing_Year as "Publishing Year"
+							Book
+							ISBN
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Title
+							Author_Name as "Author Name"
+							Publisher
+							Publishing_Year as "Publishing Year"
+							Book
+							ISBN
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Borrow_Books
+	{
+		displayname= "Borrow Books"
+		icon = "education-books-46"
+		form Borrow_Book
+		{
+			displayname = "Borrow Book"
+			success message = "Borrow Book Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Book_Id
+			(
+				type = picklist	
+				displayname = "Book Id"
+				values  = Books.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have User_Id
+			(
+				type = picklist	
+				displayname = "User Id"
+				values  = User.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Return_Date
+			(
+    			type = datetime
+				displayname = "Return Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Borrow_Date
+			(
+    			type = datetime
+				displayname = "Borrow Date"
+				initial value = "${zoho.currenttime}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Book_Condition1
+			(
+				type = radiobuttons
+				displayname = "Book Condition"
+				maxchar = 100
+				values = {"Good","Damage"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "tech-2-p-edit"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Borrow_Books
+		{
+			displayName = "All Borrow Books"
+			show all rows from Borrow_Book    
+			(
+				User_Id as "User Id"
+				Return_Date as "Return Date"
+				Borrow_Date as "Borrow Date"
+				Book_Condition1 as "Book Condition"
+				Book_Id as "Book Id"
+			)
+			options
+			(
+				icon = "education-books-46"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							User_Id as "User Id"
+							Return_Date as "Return Date"
+							Borrow_Date as "Borrow Date"
+							Book_Condition1 as "Book Condition"
+							Book_Id as "Book Id"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							User_Id as "User Id"
+							Return_Date as "Return Date"
+							Borrow_Date as "Borrow Date"
+							Book_Condition1 as "Book Condition"
+							Book_Id as "Book Id"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Return_Books
+	{
+		displayname= "Return Books"
+		icon = "education-books-46"
+		form Return_Book
+		{
+			displayname = "Return Book"
+			success message = "Return Book Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have User_Id
+			(
+				type = picklist	
+				displayname = "User Id"
+				values  = User.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Book_Id
+			(
+				type = picklist	
+				displayname = "Book Id"
+				values  = Borrow_Book.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Return_Date
+			(
+    			type = datetime
+				displayname = "Return Date"
+				initial value = "${zoho.currentdate}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Book_Condition1
+			(
+				type = radiobuttons
+				displayname = "Book Condition"
+				maxchar = 100
+				values = {"Good","Damage"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Fine_Amount
+			(
+				displayname = "Fine Amount"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "education-book-open"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Return_Books
+		{
+			displayName = "All Return Books"
+			show all rows from Return_Book    
+			(
+				Fine_Amount as "Fine Amount"
+				User_Id as "User Id"
+				Book_Id as "Book Id"
+				Return_Date as "Return Date"
+				Book_Condition1 as "Book Condition"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Fine_Amount as "Fine Amount"
+							User_Id as "User Id"
+							Book_Id as "Book Id"
+							Return_Date as "Return Date"
+							Book_Condition1 as "Book Condition"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Fine_Amount as "Fine Amount"
+							User_Id as "User Id"
+							Book_Id as "Book Id"
+							Return_Date as "Return Date"
+							Book_Condition1 as "Book Condition"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Transactions
+	{
+		icon = "business-calculator"
+		page Transactions
+		{
+			displayname = "Transactions"
+			icon = "business-calculator"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\twebDeviceConfig='{\"layout\":{\"displayType\":\"card\",\"design\":\"fluid\",\"style\":\"padding-right:0px;padding-top:0px;padding-bottom:0px;padding-left:0px;\"}}'\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width=\"50%\"\n   \t>\n\t<panel elementName=\"Panel\"\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '7px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#2A70E7'\n\twidth = '51.9965px'\n\theight = '51.9965px'\n\ttype = 'icon'\n\tvalue = 'education-book-bookmark'\n\tsize = '24px'\n\tcornerRadius = '25.9896px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\tpadding = '5px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\t  \n\t  value = 'Total Borrowed Books'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#2A70E7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\t  \n\t  value = 'thisapp.Borrow_Book.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width=\"50%\"\n   \t>\n\t<panel elementName=\"Panel 1\"\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '7px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#2A70E7'\n\twidth = '51.9965px'\n\theight = '51.9965px'\n\ttype = 'icon'\n\tvalue = 'ui-1-check-curve'\n\tsize = '24px'\n\tcornerRadius = '25.9896px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\tpadding = '5px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\t  \n\t  value = 'Total Return Books'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#2A70E7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\t  \n\t  value = 'thisapp.Return_Book.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<search \n\telementName=\"Search\"\n\tpaddingTop = '40px'\n\tpaddingLeft = '80px'\n\tpaddingRight = '80px'\n\tpaddingBottom = '40px'\n\tbgtype = 'none'\n\tbgColor = '#FFFFFF'\n\n\tshape = 'rounded'\n\tresultComponent = 'report'\n\tlinkName = 'All_Books'\n\ttarget = 'new-window'\n\tcriteriaString = 'Title.first_name.contains(input.searchString) || Title.first_name.startsWith(input.searchString) || Title.first_name.endsWith(input.searchString)'\n\tfontFamily = 'default'\n\tappLinkName = 'thisapp'\n\tstyle = '4'\n\tplaceholder = 'Enter value'\n\n>\n<searchbar color=\"#000000\" bgColor=\"#ffffff\" fontSize=\"15px\"\n\/><searchbutton color=\"#ffffff\" bgColor=\"#0072F4\" \nfontSize=\"15px\"  \/><\/search>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+
+
+
+
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Users"
+			{
+				name = "Users"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "app users\n"
+				ModulePermissions
+				{
+					User
+					{
+						allFieldsVisible= true 
+					}
+					Return_Book
+					{
+						allFieldsVisible= true 
+					}
+					Books
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Books={"View"}
+						}
+					}
+					Borrow_Book
+					{
+						allFieldsVisible= true 
+					}
+				}
+			}
+			"Admin"
+			{
+				name = "Admin"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Admin can modify or read or add data\n"
+				ModulePermissions
+				{
+					User
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Users={"View","Edit","Delete"}
+						}
+					}
+					Return_Book
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Return_Books={"View","Edit","Delete"}
+						}
+					}
+					Books
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Books={"View","Edit","Delete"}
+						}
+					}
+					Borrow_Book
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Borrow_Books={"View","Edit","Delete"}
+						}
+					}
+					Transactions
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+				ModulePermissions
+				{
+					User
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Users={"View"}
+						}
+					}
+					Return_Book
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Return_Books={"View"}
+						}
+					}
+					Books
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Books={"View"}
+						}
+					}
+					Borrow_Book
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Borrow_Books={"View"}
+						}
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Admin"
+					{
+						description = ""
+						"User"
+						{
+							description = ""
+						}
+					}
+				}
+			}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 9
+		icons = true
+		icons style = outline
+		font = "lato"
+		color options
+    	{
+            menu color = "#012a5c"
+            header color = "#012a5c"
+            name = "custom_color_1"
+            brand color = "#08788b"
+            type = "custom"
+            sub menu color = "#004dab"
+    	}
+    	logo
+    	{
+        	preference = "company_logo"
+        	placement = "left"
+    	}
+	}
+
+
+	phone
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+                name = "custom_color"
+                brand color = "#1d508e"
+                type = "custom"
+         	}
+         	logo
+         	{
+             	preference = "company_logo"
+         	}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+                name = "custom_color"
+                brand color = "#1d508e"
+                type = "custom"
+         	}
+         	logo
+         	{
+             	preference = "company_logo"
+         	}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

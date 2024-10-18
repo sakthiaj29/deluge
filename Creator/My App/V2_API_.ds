@@ -1,0 +1,554 @@
+/*
+ * Author       : rocksakthi7557
+ * Generated on : 17-Oct-2024 09:46:37
+ * Version      : 1.0
+ */
+ application "V2 API "
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	section Employees
+	{
+		icon = "users-single-04"
+		form Employee
+		{
+			success message = "Employee Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "business-business-contact-89"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Employees
+		{
+			displayName = "All Employees"
+			show all rows from Employee    
+			(
+				Name
+				Gender
+				ID
+				Added_User as "Added User"
+			)
+			options
+			(
+				icon = "users-single-04"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							ID
+							Name
+							Gender
+							Added_User as "Added User"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Name
+							Gender
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Customers
+	{
+		icon = "shopping-mobile-card"
+		form Customer
+		{
+			success message = "Customer Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = text
+				displayname = "Customer Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Gender
+			(
+				type = radiobuttons
+				displayname = "Customer Gender"
+				maxchar = 100
+				values = {"Male","Female"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "business-business-contact-89"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Customers
+		{
+			displayName = "All Customers"
+			show all rows from Customer    
+			(
+				Customer_Name as "Customer Name"
+				Customer_Gender as "Customer Gender"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Customer_Name as "Customer Name"
+							Customer_Gender as "Customer Gender"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Customer_Name as "Customer Name"
+							Customer_Gender as "Customer Gender"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void Get_Access_Token()
+                 {
+                 	resp = invokeurl
+                 	[
+                 		url :"https://accounts.zoho.in/oauth/v2/token?grant_type=authorization_code&client_id=1000.T8TG6X0VB36PB77VRUXXUR7LARSWOF&client_secret=df33d50e44c63465e646f9667bee122f7a933025e1&code=1000.e58672ca58333b3db7ded7c1d166d668.a2d3d56af784ac892653549fcf4d22fe"
+                 		type :POST
+                 	];
+                 	info resp;
+                 }
+				 map Get_Access_Token_Using_Refresh_Token(string ref_token)
+                 {
+                 	resp = invokeurl
+                 	[
+                 		url :"https://accounts.zoho.in/oauth/v2/token?refresh_token=" + ref_token + "&client_id=1000.T8TG6X0VB36PB77VRUXXUR7LARSWOF&client_secret=df33d50e44c63465e646f9667bee122f7a933025e1&grant_type=refresh_token"
+                 		type :POST
+                 	];
+                 	return resp;
+                 }
+				 void Get_Feilds()
+                 {
+                 	get_form = invokeurl
+                 	[
+                 		url :"https://www.zohoapis.in/creator/v2.1/meta/rocksakthi7557/v2-api/forms"
+                 		type :GET
+                 		headers:{"Authorization":"Zoho-oauthtoken 1000.d58d4c3d46089bfec60a11cfd896dcc5.02793136539c4829fc0744020a09e44f","environment":"development"}
+                 	];
+                 	info get_form + "\n";
+                 	all_forms = get_form.get("forms");
+                 	for each  form in all_forms
+                 	{
+                 		form_name = form.get("link_name");
+                 		get_field = invokeurl
+                 		[
+                 			url :"https://www.zohoapis.in/creator/v2.1/meta/rocksakthi7557/v2-api/form/" + form_name + "/fields"
+                 			type :GET
+                 			headers:{"Authorization":"Zoho-oauthtoken 1000.d58d4c3d46089bfec60a11cfd896dcc5.02793136539c4829fc0744020a09e44f","environment":"development"}
+                 		];
+                 		info get_field + "\n";
+                 		all_field = get_field.get("fields");
+                 		for each  field in all_field
+                 		{
+                 			info field.get("link_name");
+                 		}
+                 	}
+                 	// 	get_field = invokeurl
+                 	// 	[
+                 	// 		url :"https://www.zohoapis.in/creator/v2.1/meta/rocksakthi7557/v2-api/form/Customer/fields"
+                 	// 		type :GET
+                 	// 		headers:{"Authorization":"Zoho-oauthtoken 1000.d58d4c3d46089bfec60a11cfd896dcc5.02793136539c4829fc0744020a09e44f","environment":"development"}
+                 	// 	];
+                 	// 	info get_field+"\n";
+                 	// 	all_field = get_field.get("fields");
+                 	// 	for each  field in all_field
+                 	// 	{
+                 	// 		info field.get("link_name");
+                 	// 	}
+                 	//{"access_token":"1000.d58d4c3d46089bfec60a11cfd896dcc5.02793136539c4829fc0744020a09e44f","refresh_token":"1000.d26fd97151f460c1b1ba93ec27998d53.4b39ba783ae4f6049fb9eebb2a5e570f","scope":"ZohoCreator.meta.application.READ ZohoCreator.meta.form.READ ZohoCreator.meta.application.READ","api_domain":"https://www.zohoapis.in","token_type":"Bearer","expires_in":3600}
+                 }
+				 map Post_Data(string name, string gender, string access_token)
+                 {
+                 	parameter = Map();
+                 	parameter.put("Customer_Name",name);
+                 	parameter.put("Customer_Gender",gender);
+                 	headers = Map();
+                 	headers.put("Authorization","Zoho-oauthtoken " + access_token);
+                 	headers.put("environment","development");
+                 	headers.put("demo_user_name","user");
+                 	data = Map();
+                 	data.put("data",parameter);
+                 	res = invokeurl
+                 	[
+                 		url :"https://www.zohoapis.in/creator/v2.1/data/rocksakthi7557/v2-api/form/Customer"
+                 		type :POST
+                 		parameters:data.toString()
+                 		headers:headers
+                 	];
+                 	return res;
+                 }
+				 void To_Cancell_Access_Revoke()
+                 {
+                 	resp = invokeurl
+                 	[
+                 		url :"https://accounts.zoho.in/oauth/v2/token/revoke?token=1000.b1e19e4d3d2a2b04eae495d4e1464a19.52339d56d0e88e775debd38ba6be997a"
+                 		type :POST
+                 	];
+                 	info resp;
+                 }
+			 }
+		 }
+
+
+
+
+		workflow
+		{
+		form
+		{
+			Data_Add_on_Another_Form as "Data Add on Another Form"
+			{
+				type =  form
+				form = Employee
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ref_token = "1000.7909c9775654cea55b653b34e718ddbd.b6aa2ce22e237d0b61afb8cb1cbe4e4d";
+										access_token = "";
+										info access_token;
+										resp = thisapp.Post_Data(input.Name,input.Gender,access_token);
+										info resp;
+										if(resp.get("code").equalsIgnoreCase("1030"))
+										{
+											access_token = thisapp.Get_Access_Token_Using_Refresh_Token(ref_token).get("access_token");
+											resp = thisapp.Post_Data(input.Name,input.Gender,access_token);
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 11
+		icons = true
+		icons style = outline
+		font = "lato"
+		color options
+    	{
+        color = "1"
+    	}
+    	logo
+    	{
+        	preference = "none"
+        	placement = "left"
+    	}
+	}
+
+
+	phone
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = green
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = green
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

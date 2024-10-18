@@ -1,0 +1,654 @@
+ 11/09/24 ( 0-45 )
+------------------------------------------------------------------------------------------------
+Current Date 
+		info zoho.currentdate ;
+		info today;
+	
+	
+Date and Time
+		date="15-aug-2024 07.30.00";
+		info date ;
+		
+		
+Print pass or fail
+		mark1=65; mark2=60;
+		if(mark1>50 &&  mark2>50){
+			info true ;
+		}
+		else 
+		{
+			info false ;
+		}
+		
+		
+Sum of All Number
+		mycollection={1,2,3,4};
+		sum=0;
+		for each val in mycollection
+		{
+			sum+=val ;
+		}
+		info sum ;
+		
+		
+Product of All Numbers
+		mycollection={1,2,3,4};
+		mult=1;
+		for each val in mycollection
+		{
+			mult*=val ;
+		}
+		info mult ;
+		
+		
+Average of All Numbers
+		myNumbers={10,15,27,49,32};
+		sum=0;
+		for each val in myNumbers
+		{
+			sum+=val;
+		}
+		info sum/myNumbers.size() ;
+		info myNumbers.average() ;
+		
+		
+Smallest Among Two Numbers
+		num1=10; num2=12;
+		if(num1<num2){
+			info "Smallest is "+num1 ;
+		}
+		else{
+			info "Smallest is "+num2 ;
+		}
+
+		small=0;
+		if(num1<num2){
+			small=num1;
+		}
+		else{
+			small=num2 ;
+		}
+		info "Smallest is "+small ;
+		
+		
+Square Root of a Number
+		num=25;
+		info sqrt(num) ;
+
+
+Absolute Value and Power Function
+		num=3;
+		info "absolute value is "+abs(num)+", power 3 is "+power(3, num);
+		
+		
+Ceil and Floor Function	Equal 1	
+		num1=17.0000000001;
+		num2=18.9999999995;
+		if(ceil(num1)==floor(num2)){
+			info "equal" ;
+		}
+		else 
+		{
+			info "not equal" ;
+		}
+		
+
+Ceil and Floor Function	Equal 2		
+		num1=17.9999999999;
+		num2=18.9999999995;
+		if(ceil(num1)==floor(num2) ||  floor(num1)==ceil(num2)){
+			info "equal" ;
+		}
+		else 
+		{
+			info "not equal" ;
+		}
+		
+
+Simple Interst and Compont Interst		
+		p=1000; //princple amount
+		n=2; //number of year
+		r=10; //rate of interst
+
+		info "Simple Interst "+(p*n*r)/100 ;
+		info "Compont Interst "+p*power( ( 1+(r/100) ), n )-p;
+		
+
+Equal when square root of first number and square of second number
+		num1=6;
+		num2=3;
+		if(sqrt(num1)==num2*num2){
+			info "Equal" ;
+		}
+		else{
+			info "Not Equal" ;
+		}
+		
+		
+Perfect Square
+		num=27;
+		sqnumber=sqrt(num);
+		if(ceil(sqnumber)==floor(sqnumber)){
+			info "Perfect Square" ;
+		}
+		else{
+			info "Not Perfect Square" ;
+		}
+		
+		
+Two String equal or not		
+		info "Cans".equals("canS") ;
+		info "cans".equals("canS") ;
+		info "Cans".equalsIgnoreCase("Cans") ;
+		info "Cans".equalsIgnoreCase("canS") ;
+		
+
+Print WeekDays 
+		input=1;
+		weekDays=Collection("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+		info weekDays.get(input-1) ;
+		
+
+Print Grade 		
+		mark=100;
+		if( mark>=95 && mark<=100 ){
+			info "S" ;
+		}
+		else if ( mark>=85 && mark<=94 ) 
+		{
+			info "A" ;
+		}
+		else if ( mark>=70 && mark<=84 ) 
+		{
+			info "B" ;
+		}
+		else if ( mark>=50 && mark<=69 ) 
+		{
+			info "C" ;
+		}
+		else if( mark< 50)
+		{
+			info "F" ;
+		}	
+		
+		
+Print all Number Divisible by Given Number
+		mylist={20,30,10,15,16,12,9};
+		num=4;
+		for each val in mylist
+		{
+			if(val%num==0){
+				info val ;
+			}
+		}
+
+
+Remove the particular value and print without dublicate
+		namelist={"Goblin", "Peter", "Octopus", "Electro", "Lizard", "Sandman", "Goblin"};
+		namelist.removeAll("Octopus");
+
+		newlist={};
+		for each val in namelist
+		{
+			if(!newlist.contains(val)){
+				newlist.add(val);
+				}
+		}
+		info newlist ;
+		info namelist.distinct() ;
+		
+		
+Print all startsWith Letter S 		
+		cites={"Tokyo", "Shimla", "London", "Syndey", "Boston", "SanDiego", "Kashmir"};
+		for each city in cites
+		{
+			if(city.startsWithIgnoreCase("S")){
+				info city ;
+			}
+		}
+		
+		
+Palindrome or not
+		name="Madam";
+		revers=name.reverse();
+		if(name.equalsIgnoreCase(revers)){
+			info name+" is Palindrome" ;
+		}
+		else 
+		{
+			info name+" is not Palindrome" ;
+		}
+		
+		
+If even to next odd, or its odd change to its square
+		num=3;
+		if( num%2==0 ){
+			num+=1 ;
+		}
+		else 
+		{
+			num*=2 ;
+		}
+		info num ;
+		
+		
+Differenc b/w floor and ceil of a Number
+		num=45.4234567;
+		result=floor(num)-ceil(num);
+		info  result;
+		info  abs(result);
+		
+		
+Substring Example
+		sentence="I Like Zoho.";
+		info sentence.subString(0,7) ;
+		info sentence.subString(7) ;
+
+String function		
+		sentence="Zoho one of my fav Company.I Like Zoho, Zoho head office located at chennai, Catalyst is one of the Product of Zoho";
+		info sentence.getOccurenceCount("Zoho") ;
+
+		start=sentence.indexOf(" ");
+		end=sentence.lastIndexOf(" ");
+
+		if( sentence.subString(0,start).equals( sentence.subString(end) ) ){
+			info "Same" ;
+		}
+		else{
+			info "not same";
+		}
+	
+Replace All	
+		sentence="Zoho one of my fav Company.I Like Zoho, Zoho head office located at chennai, Catalyst is one of the Product of Zoho";
+		sentence=sentence.replaceAll(" ","");
+
+Get Prefix Words	
+		sentence="zoho is softwarecompany";
+		info sentence.getPrefixIgnoreCase("is") ;
+		
+Split --> toList or toCollection
+		sentence="Zoho one of my fav Company. I Like Zoho, Zoho head office located at chennai";	
+		info sentence.toList(" ");
+		for each val in sentence.toCollection(" ")
+		{
+			info val.len() ;
+		}
+		
+Print all words start with UpperCase()
+		sentence="zoho one of my fav company. I Like zoho, zoho head office located at chennai";	
+		newsentence="";
+		for each val in sentence.toCollection(" ")
+		{
+			newsentence+=val.subString(0,1).toUpperCase()+val.subString(1)+" " ;
+		}
+		info newsentence ;
+		
+		
+Replace all number in sentence	
+		sentence="Try 2 be the best version of yourself 4 you";
+		info sentence.replaceAll("[0-9]", "");
+		
+	
+Replac 2nd Occurene to another Words
+		sentence="Zoho Corp Zoho Corp";
+		myList=sentence.toList(" ");
+		num=2;
+		count1=0;
+		count2=0;
+		ans="";
+		for each val in myList
+		{
+			if("Zoho".equals(val)){
+				count1+=1;
+				if(count1==num){
+					ans+="Pvt ";
+				}
+				else 
+				{
+					ans+=val+" ";
+				}
+			}
+			else if("Corp".equals(val)){
+				count2+=1;
+				if(count2==num){
+					ans+="Ltd ";
+				}
+				else 
+				{
+					ans+=val+" ";
+				}
+			}
+		}
+		info ans ;
+
+	
+Find idem position
+		stationary={"Pencil", "Eraser", "Ruler", "Pen", "Compass", "Marker"};
+		info stationary.indexOf("Ruler")+1;
+		
+Remove some elements above list and add new list		
+		geometricalStationary={"Divider", "Protractor"};
+		stationary.removeElement( "Ruler" );
+		stationary.removeElement( "Compass" );
+		geometricalStationary.addAll(stationary);
+		info geometricalStationary ;
+		
+		
+Add one list to add another list and print unique list		
+		motherslist={"Ketchup", "Water Bottle", "Milk", "Butter", "Chips", "Flour"};
+		armyslist={"Milk", "Chips", "Flour", "Chocolates", "Lip Stick"};
+		motherslist.addAll(armyslist);
+		newlist=motherslist.distinct();
+		info newlist ;
+		
+		
+Sublist
+		numlist={10,20,40,30,70,80,60,90,50};
+		info numlist.subList( numlist.indexOf(30)+1, numlist.indexOf(70) ) ;
+		
+Leap Year
+		year=2000;
+		if( (year%4==0 && year%100!=0 && year%200!=0) || (year%400==0)){
+			info "Leap Year";
+		}
+		else 
+		{
+			info "Non Leap Year";
+		}
+
+Add Days or Weeks or Month in given Date
+		myDate='12-May-2000';
+		if(myDate.getMonth()%2==0){
+			myDate=myDate.addDay(3);
+		}
+		if(myDate.year()%2==0){
+			myDate=myDate.addMonth(2);
+		}
+		myYear=myDate.year();
+		if( (myYear%4==0 && myYear%100!=0 && myYear%200!=0) || (myYear%400==0)){
+			myDate=myDate.addWeek(1);
+		}
+		info myDate ;
+		
+		
+Remove all occurence in list using given name
+		myList={"Ram", "Gowtham", "Jai", "Manoj", "Ram", "Ananth"};
+		name="Ram";
+		
+		myList.removeAll(name);
+		info  myList ;
+		
+		newList={};
+		for each val in myList
+		{
+			if( !name.equals(val) ){
+				newList.add(val);
+			}
+		}
+		info newList ;
+		
+		
+Median of Smallest and Largest Number		
+		myList={12,3,4,56,78,93,34};
+		
+		info ( myList.smallest()+myList.largest() )/2 ;
+
+		myList.sort();
+		info ( myList.get(0)+myList.get( myList.size()-1 ) )/2;
+		
+Median of Nth smallest and Nth Largest
+		myList={12,3,4,56,78,93,34};
+		info ( myList.nthsmallest(3)+myList.nthlargest(2) )/2 ;
+		
+		
+Add Even Numbers one list to another list	
+		list1={1,3,2,4,5,6,9,6,4,10};
+		list2={2,5,34,7,8,4,3,4,9,2};
+		for each val in list2
+		{
+			if(val.isEven()){
+				list1.add(val);
+			}
+		}
+		info list1.distinct() ;
+		
+		
+Distint and Comman elements in list1 and list2
+		list1={1,3,2,4,5,6,9,6,4,10};
+		list2={2,5,34,7,8,4,3,4,9,2};
+		comman=list1.intersect(list2);
+		distint={};
+		for each val in list1
+		{
+			if( !list2.contains(val) && !distint.contains(val) ){
+				distint.add(val);
+			}
+		}
+		for each val in list2
+		{
+			if( !list1.contains(val) && !distint.contains(val) ){
+				distint.add(val);
+			}
+		}
+		info distint ;
+		info comman ;
+
+ 12/09/24 ( 47-59 )
+------------------------------------------------------------------------------------------------
+Print Odd index Names
+		names={"Ram", "Lakshman", "Manoz", "Subbu", "Varsha"};
+		idx=1;
+		for each name in names
+		{
+			if(idx%2!=0){
+				info name ;
+			}
+			idx+=1;
+		}
+		
+		
+Remove if Name Presend the List more than once
+		names={"Ram", "Gowtham", "Jai", "Manoj", "Ram", "Ananth"};
+		idx=0;
+		newNames={};
+		for each name in names
+		{
+			if( ( idx!=0 && !names.subList(0,idx).contains(name) ) && ( idx!=names.size() && !names.subList(idx+1).contains(name) ) ){
+				newNames.add(name);
+			}
+			idx+=1;
+		}
+		info newNames ;
+		
+		
+Median of the lists
+		list1={2,45,6,34,568,7,8,23,5,4};
+		list2={8,63,45,23,676,102,09,1};
+		info list1.sort() ;
+		info list1.median() ;
+		info list2.median() ;
+		
+		
+Print all the Key and Value in Map
+		stocks={"Mobile":60, "Laptop":30, "HeadPhone":150, "Ipad":30, "Tab":60, "Charger":40};
+		info stocks;
+		info stocks.containKey("Ipad") ;
+		
+Merge Two Maps
+    -Contains some Keys Same
+		map1={"Name":"Zoho", "Type":"IT", "CEO":"Sridhar Vembu", "Head Office":"Chennai"};
+		map2={"Name":"Aarthraa", "Type":"IT", "Directors":"Radha Vembu and Dandapani Rajendran", "Head Office":"Thanjavur"};
+		map1.putAll(map2);
+		info map1 +"\n" ;
+		
+	-Different Keys	
+		map1={"CName":"Zoho", "Types":"IT", "CEO":"Sridhar Vembu", "Head Office":"Chennai"};
+		map2={"Name":"Aarthraa", "Type":"IT", "Directors":"Radha Vembu and Dandapani Rajendran", "Office":"Thanjavur"};
+		map1.putAll(map2);
+		info map1 ;
+		
+		
+Update Values in Map
+		equipments={"Gloves":50, "Dumbbells":200, "Plates":115, "Treadmill":500, "Bench":100, "Gym Bike":800};
+		info equipments;
+		equipments.put("Dumbbells", 300);
+		equipments.put("Treadmill", 650);
+		equipments.put("Gym Bike", 880);
+		info equipments ;
+		
+		
+Print Pass or Fail
+		mark1=59;
+		mark2=34;
+		mark3=89;
+		if(mark1>=35 && mark2>=35 && mark3>=35 ){
+			info "Pass" ;
+		}
+		else 
+		{
+			info "Fail" ;
+		}
+
+		if(mark1<35 || mark2<35 || mark3<35 ){
+			info "Fail" ;
+		}
+		else 
+		{
+			info "Pass";
+		}
+
+		if( !(mark1>=35 && mark2>=35 && mark3>=35) ){
+			info "Fail" ;
+		}
+		else 
+		{
+			info "Pass";
+		}
+	
+4 Seasons
+		myDate='12-Feb-2000';
+		month=myDate.getMonth();
+		if( month==12 || month==1 ||  month==2 ){
+			info "Winter" ;
+		}
+		else if ( month==3 ||  month==4 || month==5 ){
+			info "Spring" ;
+		} 
+		else if ( month==6 || month==7 || month==8 ){
+			info "Summer" ;
+		}
+		else 
+		{
+			info "Autumn" ;
+		}
+		
+Multiplication Table
+		myTable=Collection(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+		number=5;
+		for each val in myTable
+		{
+			info val+" * "+number+" = "+number*val;
+		}
+		
+Map Some Operations Contains Remove
+		employeesMap={15:"Mohan", 56:"Srishti", 23:"Arun", 75:"Dinesh", 33:"Karthik", 94:"Santhosh", 2:"Vignesh", 13:"Sandeep", 69:"Navin", 19:"Murugan"};
+		tempList={};
+		for each name in employeesMap
+		{
+			tempList.add(name) ;
+		}
+		tempList.sort();
+		info tempList ;
+
+		employeesMap.remove(94);
+		employeesMap.put(105, "Santhosh");
+		info employeesMap ;
+		info employeesMap.containValue("Karthik");
+
+		info "Total Employees "+employeesMap.size();
+		employeesMap.remove(56);
+ 		info employeesMap ;
+		
+Employees Salary Increment
+		Basic=12000;
+		HRA=5000;
+		Allowance=3000;
+		Others=5000;
+		TotalSalary=Basic+HRA+Allowance+Others;
+		info "Total Salary ="+TotalSalary;
+
+		CurrentSalary=TotalSalary+(Basic*20/100)+(Allowance*10/100);
+		info "Current Salary ="+CurrentSalary ;
+		
+		
+Fine Students Rank 	
+		students={"Ram", "Karthik", "Sakthi", "Suresh", "Venkat", "Raj"};
+		studentsMarks={{45,70,39,88,30}, {54,73,44,78,66}, {54,73,44,78,66}, {63,45,49,51,55}, {63,76,57,88,41}, {77,68,99,93,93}};
+		info studentsMarks ;
+		totalMarks={};
+		
+		sub1=0;
+		sub2=0;
+		sub3=0;
+		sub4=0;
+		sub5=0;
+		numele=1;
+		
+		for each marks in studentsMarks
+		{
+			sum=0;
+			sub1+=marks.get(0);
+			sub2+=marks.get(1);
+			sub3+=marks.get(2);
+			sub4+=marks.get(3);
+			sub5+=marks.get(4);
+			
+			numele=marks.size();
+			
+			for each val in marks
+			{
+				sum+=val;
+			}
+			totalMarks.add(sum);
+		}
+
+		idx=0;
+		for each mark in totalMarks
+		{
+			info students.get(idx)+" total mark = "+mark+", rank is "+totalMarks.rank(mark) ;
+			idx+=1;
+		}
+		info "Subject 1 Avg="+sub1/numele ;
+		info "Subject 2 Avg="+sub2/numele ;
+		info "Subject 3 Avg="+sub3/numele ;
+		info "Subject 4 Avg="+sub4/numele ;
+		info "Subject 5 Avg="+sub5/numele ;
+		
+	
+Find Days and Requred Peoples to Complete the Project
+		employeeCount=5;
+		designerHour=48;
+		developerHour=152;
+		marketingHour=40;
+		perDayHour=8;
+		completDays=3;
+		
+		totalHour = designerHour+developerHour+marketingHour;
+		info "Total Hour="+totalHour ;
+		
+		requredDays=totalHour/perDayHour;
+		totalDay=requredDays+ceil(requredDays/7);
+		info "To Complete the Project in "+totalDay+" days" ;
+		info  "To Complete a Project in "+completDays+" days we have "+ceil(requredDays*completDays/employeeCount)+" people requried";
+
+
+Print Students Grade
+		grade={100:"S", 90:"A", 80:"B", 70:"B", 60:"C", 50:"C", 40:"F"};
+		n=1;
+		mark=30;
+		if(69<mark){
+			n=toDecimal(mark).round(-1);
+		}
+		else{
+			n=mark.truncate(-1);
+		}

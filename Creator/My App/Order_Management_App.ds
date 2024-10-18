@@ -1,0 +1,563 @@
+/*
+ * Author       : rocksakthi7557
+ * Generated on : 17-Oct-2024 09:45:37
+ * Version      : 1.0
+ */
+ application "Order Management App"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	section Orders
+	{
+		icon = "shopping-list"
+		form Orders
+		{
+			success message = "Order Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Items
+			(
+				type = grid
+				values  = Item.ID
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "shopping-list"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Orders
+		{
+			displayName = "All Orders"
+			show all rows from Orders    
+			(
+				Email
+				Name
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Email
+							Name
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Email
+							Name
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Items
+	{
+		icon = "design-2-selection"
+		form Item
+		{
+			success message = "Item Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Quentity
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Rate
+			(
+				type = decimal
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "shopping-cart-simple-remove"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Items
+		{
+			displayName = "All Items"
+			show all rows from Item    
+			(
+				Name
+				Quentity
+				Rate
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Name
+							Quentity
+							Rate
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Name
+							Quentity
+							Rate
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void Post_Data()
+                 {
+                 	parameter = Map();
+                 	parameter.put("Name","Saro");
+                 	parameter.put("Gender","Male");
+                 	headers = Map();
+                 	headers.put("Authorization","Zoho-oauthtoken 1000.b1e19e4d3d2a2b04eae495d4e1464a19.52339d56d0e88e775debd38ba6be997a");
+                 	headers.put("demo_user_name","user");
+                 	headers.put("environment","development");
+                 	data = Map();
+                 	data.put("data",parameter);
+                 	res = invokeurl
+                 	[
+                 		url :"https://www.zohoapis.in/creator/v2.1/data/rocksakthi7557/v2-api/form/Employee"
+                 		type :POST
+                 		parameters:data.toString()
+                 		headers:headers
+                 	];
+                 	info res;
+                 	// 	{"access_token":"1000.b1e19e4d3d2a2b04eae495d4e1464a19.52339d56d0e88e775debd38ba6be997a","refresh_token":"1000.a5625dc84c26a16dbe96e9bf9cdd1945.382371c890724e5fa5948b87d3f8bb9b","scope":"ZohoCreator.form.CREATE","api_domain":"https://www.zohoapis.in","token_type":"Bearer","expires_in":3600}
+                 }
+			 }
+		 }
+
+
+
+
+		workflow
+		{
+		form
+		{
+			Genarate_Invoice as "Genarate Invoice"
+			{
+				type =  form
+				form = Orders
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											order_list = List();
+										for each  line in Items
+										{
+											item_resp = zoho.books.getRecords("items","60033556085","name=" + line.Name,"zoho_books_connection");
+											order_details = Map();
+											item_list = item_resp.get("items");
+											item = item_list.get(0);
+											order_details.put("item_id",item.get("item_id"));
+											order_details.put("name",line.Name);
+											order_details.put("quantity",line.Quentity);
+											order_details.put("rate",line.Rate);
+											order_list.add(order_details);
+										}
+										contact_resp = zoho.books.getRecords("Contacts","60033556085","contact_name=" + input.Name + "&email=" + input.Email,"zoho_books_connection");
+										value = Map();
+										contact_list = contact_resp.get("contacts");
+										contact = contact_list.get(0);
+										value.put("customer_id",contact.get("contact_id"));
+										value.put("line_items",order_list);
+										Invoice = zoho.books.createRecord("Invoices","60033556085",value,"zoho_books_connection");
+						)
+					}
+				}
+
+			}
+			Validate_User_data as "Validate User data"
+			{
+				type =  form
+				form = Orders
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											resp = zoho.books.getRecords("Contacts","60033556085","contact_name=" + input.Name + "&email=" + input.Email,"zoho_books_connection");
+										contactList = resp.get("contacts");
+										if(contactList.isEmpty())
+										{
+											contactMap = Map();
+											contactMap.put("contact_name",input.Name);
+											cMap = Map();
+											cMap.put("email",input.Email);
+											cList = list();
+											cList.add(cMap);
+											contactMap.put("contact_persons",cList);
+											createContactResponse = zoho.books.createRecord("Contacts","60033556085",contactMap,"zoho_books_connection");
+											if(createContactResponse.get("code") != "0")
+											{
+												alert "Error: Customer not inserted in Zoho Books!";
+												cancel submit;
+											}
+										}
+										for each  item in Items
+										{
+											resp1 = zoho.books.getRecords("items","60033556085","name=" + item.Name,"zoho_books_connection");
+											itemlist = resp1.get("items");
+											info itemlist;
+											if(itemlist.isEmpty())
+											{
+												alert "Item not fount!";
+												cancel submit;
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 2
+		icons = true
+		icons style = outline
+		font = "lato"
+		color options
+    	{
+        color = "1"
+    	}
+    	logo
+    	{
+        	preference = "none"
+        	placement = "left"
+    	}
+	}
+
+	connections
+	{
+		zoho_books_connection
+		(
+			displayname = "Zoho Books Connection"
+			connector = zoho_books
+			permissions = {"create_bill","create_chart_of_account","create_contact","create_credit_note","create_estimate","create_expense","create_item","create_journal","create_purchase_order","create_recurring_bill","create_recurring_invoice","create_retainer_invoice","create_sales_invoice","create_sales_order","create_vendor","create_vendor_credit","fetch_chart_of_account","fetch_contact_by_email_or_name","fetch_credit_note_by_number","fetch_customer_payment","fetch_estimate","fetch_expense","fetch_invoice_by_number","fetch_item_by_name","fetch_journal","fetch_purchase_order","fetch_recurring_bill","fetch_recurring_expense","fetch_recurring_invoice","fetch_retainer_invoice_by_number","fetch_salesorder","fetch_vendor","fetch_vendor_credit","fetch_vendor_payment","record_payment","record_vendor_payment","update_bill","update_chart_of_account","update_contact","update_credit_note","update_estimate","update_expense","update_item","update_journal","update_purchase_order","update_recurring_bill","update_recurring_expense","update_recurring_invoice","update_retainer_invoice","update_sales_invoice","update_sales_order","update_vendor","update_vendor_credit"}
+		)
+	}
+
+	phone
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = turquoise
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = turquoise
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

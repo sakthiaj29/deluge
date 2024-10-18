@@ -1,0 +1,23 @@
+//Get All Tickets 
+resp = invokeurl
+	[
+		url :"https://desk.zoho.in/api/v1/tickets?include=contacts,assignee,departments,team,isRead"
+		type :GET
+		headers:{"orgId":"*","Authorization":"Zoho-oauthtoken < my OAuth token >"}
+	];
+
+*To get orgId go to Desk ---> Setup -> API -> Zoho Service Communication (ZSC) Key -> OrgId
+
+
+//Add Ticket
+parameters = Map();
+	parameters.put("subject","Restrunt UX Not Statisfy");
+	parameters.put("departmentId", < your dep id >);
+	parameters.put("contactId", < your contact id >);
+	resp = invokeurl
+	[
+		url :"https://desk.zoho.in/api/v1/tickets"
+		type :POST
+		parameters:parameters.toString()
+		headers:{"orgId": < your org id >,"Authorization":"Zoho-oauthtoken < my OAuth token>"}
+	];

@@ -1,0 +1,664 @@
+17/09/24
+---------------------------------------------------------------------------------
+//Given Number Prime Or Not
+		list1={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		number=2;
+		count=0;
+		for each num in list1
+		{
+			if(number%num==0){
+				count+=1;
+			}
+		}
+		if(count==2){
+			info "Prime Number";
+		}
+		else 
+		{
+			info "Not Prime" ;
+		}
+		
+//Print All Primes in given List
+		list1={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+		info "Prime Numbers";
+		for each num in list1
+		{
+			count=0;
+			for each val in list1
+			{
+				if(num%val==0){
+					count+=1;
+				}
+				if(num<val){
+					break;
+				}
+			}
+			if(count==2){
+				info num ;
+			}
+		}
+
+//Get Indexs form List
+		for each index num in {1,2,3}{
+			info ;
+		}
+
+
+//If Length of the Word is greater the
+		sendence="Zoho is my fav Company, Aarthraa is Partener of Zoho";
+		new_sendence="";
+		for each word in sendence.toCollection(" ")
+		{
+			if(word.length()>4){
+				new_sendence+=word.reverse()+" ";
+			}
+			else 
+			{
+				new_sendence+=word+" ";
+			}
+		}
+		info new_sendence ;
+
+
+//Change Sentance normal to Camal Case
+		sentence="camelCase";
+		new_sentence="";
+		for each letter in sentence.toCollection("")
+		{
+			if(letter.toUpperCase().equals(letter)){
+				new_sentence+=" "+letter;
+			}
+			else 
+			{
+				new_sentence+=letter;
+			}
+		}
+		info new_sentence ;
+
+
+//Find Leaders in List
+		lists={16,17,4,3,5,2};
+		leader=lists.get(lists.size()-1);
+		new_list={leader};
+		for each index idx in lists
+		{
+			temp=lists.get(lists.size()-1-idx);
+			if(leader<temp){
+				leader=temp;
+				new_list.add(leader);
+			}
+		}
+		for each index idx in new_list
+		{
+			info new_list.get(new_list.size()-idx-1) ;
+		}
+		
+		
+//Find Even Number along all odd Numbers or Odd Number along all Even Numbers
+		my_list={1,3,5,6,9,3,1,5};
+		oddNumber=0;
+		evenNumber=0;
+		evenCount=0;
+		oddCount=0;
+		for each num in my_list
+		{
+			if(num.isEven()){
+				evenCount+=1;
+				evenNumber=num;
+			}
+			else{
+				oddCount+=1;
+				oddNumber=num;
+			}
+		}
+		if(evenCount>1){
+			info "Odd number is "+ oddNumber ;
+		}
+		else 
+		{
+			info "Even number is "+ evenNumber ;
+		}
+		
+	
+//Change normal Sentence to Camal Case in Single Word	
+		sentence="iSS.number case";
+		new_sentence=sentence.subString(0,1).toLowerCase()+sentence.proper().replaceAll(" ", "").subString(1);
+		info new_sentence ;
+		
+
+//Remove word is Palindrome		
+		sentence="Saro speakes malayalam";
+		new_sentence="";
+		for each word in sentence.toCollection(" ")
+		{
+			if( !word.equalsIgnoreCase( word.reverse() ) ){
+				new_sentence+=word+" ";	
+			}
+		}
+		info new_sentence ;
+		
+
+18/09/24		
+---------------------------------------------------------------------------------	
+//leetcode (53) Maximum Subarray
+	input: [5,4,-1,7,8]
+	output: 23
+
+		my_list={-2,1,-3,4,-1,2,1,-5,4};
+		max_sum=-2147483648;
+		sum=0;
+		for each num in my_list
+		{
+			sum+=num;
+			if(sum> max_sum){
+				max_sum=sum;
+			}
+			if(sum<0){
+				sum=0;
+			}
+		}
+		info max_sum ;
+		
+
+//sort an element in odd position in descending order andother in ascending
+		my_list={13,2,4,15,12,10,5};
+		oddPosition=list();
+		evenPosition=list();
+		for each index idx in my_list
+		{
+			if( idx.isOdd() ){
+				evenPosition.add( my_list.get(idx) );
+			}
+			else 
+			{
+				oddPosition.add( my_list.get(idx) );
+			}
+			
+		}
+		info my_list ;
+		evenPosition.sort();
+		oddPosition.sort(false);
+		new_list=list();
+		len1=0;
+		len2=0;
+		for each index idx in my_list
+		{
+			if ( idx.isEven() ) 
+			{
+				new_list.add( oddPosition.get(len1) );
+				len1+=1;
+			}
+			else 
+			{
+				new_list.add( evenPosition.get(len2) );
+				len2+=1;
+			}
+		}
+		info new_list ;
+
+
+//longest increasing subarray
+		my_list={3,4,5,1,2,3,5};
+		temp=list:Int();
+		result=list:Int();
+		for each val in my_list
+		{
+			if( val.isNumber() ){
+				if ( temp.size()!=0 && temp.get(temp.size()-1)<val ) 
+				{
+					temp.add(val);
+				}
+				else 
+				{
+					temp.clear();
+					temp.add(val);
+				}
+			}	
+			if(temp.size()> result.size()){
+				result=temp;
+			}
+		}
+		info my_list ;
+		info result ;
+		
+		
+//rotate an list
+		my_list={1, 2, 3, 4, 5, 6, 7};
+		rotate=4;
+		rotate=rotate%my_list.size();
+		
+	//left rotate
+		new_list1=list:Int();
+		new_list1.addAll( my_list.subList(rotate) );
+		new_list1.addAll( my_list.subList(0, rotate) );
+		info "Input "+my_list ;
+		info "left rotated list "+new_list1 ;
+		
+	//right rotate
+		new_list2=list:Int();
+		new_list2.addAll( my_list.subList(my_list.size()-rotate) );
+		new_list2.addAll( my_list.subList(0, my_list.size()-rotate) );
+		info "Input "+my_list ;
+		info "right rotated list "+new_list2 ;
+		
+		
+
+//version check
+		version1="1.0.1";
+		version2="1.0.2";
+		version1_list=version1.toList(".");
+		version2_list=version2.toList(".");
+		isEqual=true;
+		for each index idx in version1_list
+		{
+			if(version1_list.get(idx).toNumber() < version2_list.get(idx).toNumber()){
+				info "Upgrade" ;
+				isEqual=false;
+				break;
+			}
+			else if(version1_list.get(idx).toNumber() > version2_list.get(idx).toNumber()){
+				info "Downgrade" ;
+				isEqual=false;
+				break;
+			}
+		}
+		if(isEqual){
+			info "Equal";
+		}
+		
+		
+//expandind String
+	Input: b3c6d15
+	Output: bbbccccccddddddddddddddd
+	
+		word="a1b10";
+		num_list=list:int();
+		num=0;
+		for each val in word.toList(""){
+			if(val.isNumber()){
+				num+=val;
+			}
+			else 
+			{
+				num_list.add( toNumber(num) );
+				num=0;
+			}
+		}
+		num_list.add(num); 
+		num_list.remove(0) ;
+		str="";
+		result="";
+		idx=0;
+		for each val in word.toList("")
+		{
+			if(val.isNumber() && idx<num_list.size() ){
+				result+=str.repeat( num_list.get(idx) );
+				str="";
+				idx+=1;
+			}
+			else 
+			{
+				str+=val;
+			}
+		}
+		info result ;
+		
+		
+//reverse alphabets not special characters
+	Input: house no:123@ cbe
+	Output: ebc32 1o:nes@ uoh
+	
+		word="house no:123@ cbe";
+		letters=word.getAlphaNumeric().reverse().toList("");
+		idx=0;
+		result="";
+		for each val in word.toList("")
+		{
+			if( letters.contains(val) ){
+				result+=letters.get(idx);
+				idx+=1;
+			}
+			else{
+				result+=val;
+			}
+		}
+		info word ;
+		info result ;
+		
+		
+//find Majority Element
+		lists={3,3,4,2,4,4,2,4,4};
+		isFind=true;
+		for each num in lists.distinct()
+		{
+			if( lists.toString().getOccurenceCount(num)>lists.size()/2){
+				info num+ " is the Majority Element" ;
+				isFind=false;
+			}
+		}
+		if( isFind ){
+			info "No Majority Element" ;
+		}
+		
+
+19/09/24
+-----------------------------------------------------------------------
+//	Input : X
+	Output : XYZ
+
+		letter="X";
+		alphabets="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		info alphabets.subString( alphabets.indexOf(letter) );
+		
+		
+//find missing number b/w 0-(n-1) (268) leetcode
+	Input: {0,5,6,9,3,2,4,8,1}
+	Output: 7
+	
+		my_list={0,1,3,5,6,4};
+		info "Missing number is "+(( (my_list.largest()*(my_list.largest()+1) )/2 )-
+									(my_list.average()*my_list.size()).round(1)).round(0);
+
+//get all diagonal
+		my_map=map();
+		matrix={{1,2,3},{4,5,6},{7,8,9}};
+		for each index row_idx in matrix
+		{
+			lists=matrix.get(row_idx);
+			for each index colm_idx in lists
+			{
+				temp=colm_idx-row_idx;
+				if(my_map.containKey(temp)) {
+					t=my_map.get(temp);
+					t.add(lists.get(colm_idx));
+					my_map.put(temp, t);
+				}
+				else {
+					t=list();
+					t.add( lists.get(colm_idx) );
+					my_map.put(temp, t);
+				}
+			}
+		}
+		info my_map ;
+	
+
+//Best Time to Buy and Sell Stock (Find Max Profit) (121) leetcode
+	Input:{7,1,5,3,6,4}
+	Output: 5
+	
+	Input: (7,6,4,3,1)
+	Output: 0
+	
+		prices={7,1,5,3,6,4};
+		info "Max profit is "+( prices.subList( prices.indexOf(prices.smallest()) ).largest() - prices.smallest() );
+
+//Minimum Path Sum (64) leetcode
+	Input: 1 3 1
+		   1 5 1
+		   4 2 1
+	Output: 7
+	
+		matrix=Collection( Collection(1,3,1), Collection(1,5,1), Collection(4,2,1) );
+		for each index row_idx in matrix
+		{
+			temp=matrix.get(row_idx);
+			for each index colm_idx in temp
+			{
+				if ( row_idx==0 && colm_idx!=0 ) {
+					temp.update(colm_idx, temp.get(colm_idx)+temp.get(colm_idx-1));
+				}
+				else if( colm_idx==0 && row_idx!=0 ) {
+					temp.update( 0, matrix.get(row_idx).get(0)+matrix.get(row_idx-1).get(0) );
+				}
+				else if( row_idx!=0 && colm_idx!=0 ){
+					temp.update( colm_idx, matrix.get(row_idx).get(colm_idx)+(  matrix.get(row_idx-1).get(colm_idx).min(matrix.get(row_idx-1).get(colm_idx))  ) );
+				}
+			}
+		}
+		last_list=matrix.get(matrix.size()-1);
+		info "Minnum path sum is "+ last_list.get(last_list.size()-1) ;
+
+
+//Rotate 90deg Image(Matrix)
+	Input: 1 2 3
+	       4 5 6 
+		   7 8 9
+	Output: 7 4 1
+			8 5 2
+			9 6 3
+			
+		matrix={{1,2,3},{0,1,2},{1,2,3}};
+		info "input" ;
+		for each val in matrix
+		{
+			info val ;
+		}
+		info "\n output";
+		for each index row_idx in matrix
+		{
+			temp=matrix.get(row_idx);
+			for each index colm_idx in temp
+			{
+				if(colm_idx<row_idx){
+					val=temp.get(colm_idx);
+					temp.update(colm_idx, matrix.get(colm_idx).get(row_idx));
+					l=matrix.get(colm_idx);
+					l.update(row_idx, val);
+				}
+			}
+		}
+		for each index row_idx in matrix
+		{
+			temp=matrix.get(row_idx);
+			l=temp.size()-1;
+			for each index colm_idx in temp
+			{
+				if(colm_idx<temp.size()/2){
+					val=temp.get(colm_idx);
+					temp.update(colm_idx, temp.get(l));
+					temp.update(l, val);
+					l=l-1;
+				}	
+			}
+		}
+		for each val in matrix
+		{
+			info val ;
+		}
+
+	
+//find Pivot Index (724) leetcode
+	Input: {1,7,3,6,5,4,2}
+	Output: 3
+		nums={1,2,3};
+		total_sum=(nums.average()*nums.size()).round(0);
+		ans=-1;
+		sum=0;
+		for each index idx in nums
+		{
+			total_sum-=nums.get(idx);
+			if(sum==total_sum){
+				ans=idx ;
+				break;
+			}
+			sum+=nums.get(idx);
+		}
+		if(ans==-1){
+			info "-1" ;
+		}
+		else {
+			info "Pivot Index is "+ans ;
+		}
+		
+		
+20/09/24
+-----------------------------------------------------------------------		
+//Product of Array Except Self(Current element) (238) leetcode
+	Input: {-1,1,0,-3,3}
+	Output: {0,0,9,0,0}
+	
+	Input: {1,2,1,3}
+	Output: {6,3,6,2}
+	
+		array={1,2,3,4};
+		left=list();
+		right=list();
+		result=list();
+		left.add(1);
+		for each index idx in array{
+			if(idx!=0){
+				left.add(left.get(idx-1)*array.get(idx-1));
+			}
+		}
+		right.add(1);
+		len=array.size()-1;
+		for each index idx in array{
+			if(idx!=0){
+				right.add(right.get(idx-1)*array.get(len));
+				len-=1;
+			}
+		}
+		len=right.size()-1;
+		for each index idx in array{
+			result.add(left.get(idx)*right.get(len));
+			len-=1;
+		}
+		info result;
+		
+		
+//Get All Startswith and EndsWith a Words pairs
+	Input: {"pa", "papa", "padayapa", "ma", "mama"}
+	Output: {"pa":{"papa", "padayapa"}, "ma":{"mama"}}
+	
+	Input: {"abab", "ab"}
+	Output: {}
+	
+		words={"a","aba","ababa","aa"};
+		new_map=map();
+		for each index left in words
+		{
+			for each index right in words
+			{
+				if(left<right){
+					str1=words.get(left);
+					str2=words.get(right);
+					if(str2.startsWith(str1) && str2.endsWith(str1) ){
+						if(new_map.containKey(str1)){
+							temp=new_map.get(str1);
+							temp.add(str2);
+							new_map.put(str1, temp);
+						}
+						else{
+							temp=list();
+							temp.add(str2);
+							new_map.put(str1, temp);
+						}
+					}
+				}
+			}
+		}
+		info new_map ;
+		
+21/09/24
+---------------------------------------------------------------	
+//instagram like post ( condition if statement example)	
+	Input: {"saro"}
+	Output: saro like your post.
+	
+	Input: {"sakthi", "james", "saravanan", "kiruba", "anver"}
+	Output: sakthi, james and 3 other like your post.
+	
+		names={"saro", "sam", "akash", "sakthi", "jhsdg", "jhdggt"};
+		info if( names.size()>2,
+		names.get(0)+", "+names.get(1)+" and "+(names.size()-2)+" other, ",
+			if(names.size()==2,
+			names.get(0)+" and "+names.get(1),
+				if(names.size()==1,
+				names.get(0), "No one")) )+" like your post.";
+				
+		
+//Coins Count for each Coin	
+	Input: 51
+	Output: 50:1, 1:1
+	
+	Input: 99
+	Output: 50:1, 20:2, 5:1, 2:2
+		amount=10051;
+		coins={100,50,20,10,5,2,1};
+		coins_count=map();
+		for each coin in coins
+		{
+			if(amount>0 && amount>=coin){
+				count=(amount/coin).floor();
+				amount-=count*coin;
+				coins_count.put( coin, count );
+			}
+		}
+		info coins_count;
+		
+		
+//Excel Sheet Column Number (171) leetcode
+	Input: ZY
+	Output: 701
+	
+	Input: SA
+	Output: 495
+	
+		columnTitle="AB";
+		result=0;
+		character = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for each letter in columnTitle.toList("")
+		{
+			result*=26;
+			result+=( character.indexOf(letter)+1);
+		}
+		info result ;
+		
+		
+//Group Anagrams (49) leetcode
+		Input: {"eat", "tea", "tan", "ate", "nat", "bat"}
+		Output: {{"eat","tea","ate"},{"tan","nat"},{"bat"}}
+		
+		Input: {"a"}
+		Output: {{"a"}}
+		
+		words={"eat", "tea", "tan", "ate", "nat", "bat"};
+		group_map=map();
+		for each word in words
+		{
+			temp=word.toList("").sort().toString("");
+			if(group_map.containKey(temp)){
+				l=group_map.get(temp);
+				l.add(word);
+			}
+			else {
+				group_map.put(temp, {word});
+			}
+		}
+		info group_map ;		
+		
+		
+23/04/24		
+-----------------------------------------------------------------
+//Number of Laser Beams in a Bank (2125) leetcode
+// 1 means laser , 0 means empty 
+
+	Input: {"011001", "000000", "010100", "001000"}
+	Output: 8
+	
+	Input: {"000", "111", "000"}
+	Output: 
+	
+		lasers={"011001","000000","010100","001000"};
+		pre=0;
+		ans=0;
+		for each laser in lasers
+		{
+			curr=laser.getOccurenceCount("1") ;
+			ans+=pre*curr;
+			if(curr>0){
+				pre=curr;	
+			}
+		}
+		info ans;

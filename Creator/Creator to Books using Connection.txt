@@ -1,0 +1,71 @@
+<-- Create Contact If not -->
+
+//Get All Contact( Customer )
+response = zoho.books.getRecords("Contacts", <my org id>,"contact_name=" + input.Name + "&email=" + input.Email, <connection name>);
+contact_list = response.get("contacts");
+if(contact_list.isEmpty())
+{
+	contact_name_map = Map();
+	contact_name_map.put("contact_name",input.Name);
+	contact_email_map = Map();
+	contact_email_map.put("email",input.Email);
+	new_contact_list = list();
+	new_contact_list.add(contact_email_map);
+	contact_name_map.put("contact_persons",new_contact_list);
+
+	//Create Contact 
+	create_contact_response = zoho.books.createRecord("Contacts", <my org id>,contact_name_map, <connection name>);
+	if(!create_contact_response.get("code").equalsIgnoreCase("0"))
+	{
+		alert "Error: Customer not inserted in Zoho Books!";
+		cancel submit;
+	}
+}
+
+//Create Item If Not
+for each  item in Items //subform -> Name, Rate
+{
+	resp1 = zoho.books.getRecords("items", <my org id>,"name=" + item.Name, <connection name>);
+	itemlist = resp1.get("items");
+	if(itemlist.isEmpty())
+	{
+		item_details = Map();
+		item_details.put("name",item.Name);
+		item_details.put("status","active");
+		item_details.put("rate",item.Rate);
+		resp2 = zoho.books.createRecord("items", <my org id>,item_details, <connection name>);
+	}
+}
+
+
+
+<-- Create Invoice -->
+
+//Create item If Not
+order_list = List();
+for each  line in Items
+{
+	//Get Items Using Name
+	item_resp = zoho.books.getRecords("items", <my org id>,"name=" + line.Name, <connection name>);
+	order_details = Map();
+	item_list = item_resp.get("items");
+	item = item_list.get(0);
+	order_details.put("item_id",item.get("item_id"));
+	order_details.put("name",line.Name);
+	order_details.put("quantity",line.Quentity);
+	order_details.put("rate",line.Rate);
+	order_list.add(order_details);
+}
+//Get Contact( Customer )
+contact_response = zoho.books.getRecords("Contacts", <my org id>,"contact_name=" + input.Name + "&email=" + input.Email, <connection name>);
+value = Map();
+contact_list = contact_response.get("contacts");
+contact = contact_list.get(0);
+value.put("customer_id",contact.get("contact_id"));
+value.put("line_items",order_list);
+
+//Create Invoice
+Invoice = zoho.books.createRecord("Invoices", <my org id>,value, <connection name>);
+
+
+

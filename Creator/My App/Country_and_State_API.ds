@@ -1,0 +1,719 @@
+/*
+ * Author       : rocksakthi7557
+ * Generated on : 16-Oct-2024 14:16:05
+ * Version      : 1.0
+ */
+ application "Country and State API"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	section Forms
+	{
+		icon = "design-2-form"
+		form Form
+		{
+			success message = "Form Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Select_Country
+			(
+				type = picklist	
+				displayname = "Select Country"
+				values  = Country.ID
+    			displayformat = [Country_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Select_States
+			(
+				type = picklist	
+				displayname = "Select States"
+				values  = States[Country_Name.ID == input.Select_Country].ID
+    			displayformat = [State_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "design-2-form"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Forms
+		{
+			displayName = "All Forms"
+			show all rows from Form    
+			(
+				Select_Country as "Select Country"
+				Select_States as "Select States"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Select_Country as "Select Country"
+							Select_States as "Select States"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Select_Country as "Select Country"
+							Select_States as "Select States"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Countries
+	{
+		icon = "travel-castle"
+		form Country
+		{
+			success message = "Country Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Country_Name
+			(
+    			type = text
+				displayname = "Country Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "loader-refresh"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Countries
+		{
+			displayName = "All Countries"
+			show all rows from Country    
+			(
+				Country_Name as "Country Name"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							Country_Name as "Country Name"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							Country_Name as "Country Name"
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section States
+	{
+		icon = "health-ambulance"
+		form States
+		{
+			success message = "State Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Country_Name
+			(
+				type = picklist	
+				values  = Country.ID
+    			displayformat = [Country_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			State_Name
+			(
+    			type = text
+				displayname = "State Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "health-ambulance"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_States
+		{
+			displayName = "All States"
+			show all rows from States    
+			(
+				State_Name as "State Name"
+				Country_Name
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+						layout type = -1
+						fields
+						(
+							State_Name as "State Name"
+							Country_Name
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+					record
+					(
+						Edit   	   
+						Duplicate   	   
+						Delete   	   
+    				)
+    			)
+    			action
+    			(
+					on click
+					(
+						View Record   	   
+    				)
+					on right click
+					(
+						Edit   	   
+						Delete   	   
+						Duplicate   	   
+						View Record   	   
+    				)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+						layout type = -2
+						fields
+						(
+							State_Name as "State Name"
+							Country_Name
+						)
+					)
+				)
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void API_Country_And_States()
+                 {
+                 	resp = invokeurl
+                 	[
+                 		url :"https://countriesnow.space/api/v0.1/countries/states"
+                 		type :GET
+                 	];
+                 	data = resp.get("data");
+                 	for each  country in data
+                 	{
+                 		country_name = country.get("name");
+                 		if(country_name.startsWithIgnoreCase("i") || country_name.startsWithIgnoreCase("a") || country_name.startsWithIgnoreCase("b"))
+                 		{
+                 			resp1 = insert into Country
+                 			[
+                 				Added_User=zoho.loginuser
+                 				Country_Name=country_name
+                 			];
+                 			states = country.get("states");
+                 			for each  state in states
+                 			{
+                 				state_name = state.get("name");
+                 				resp2 = insert into States
+                 				[
+                 					Added_User=zoho.loginuser
+                 					Country_Name=resp1
+                 					State_Name=state_name
+                 				];
+                 			}
+                 		}
+                 	}
+                 }
+				 void api_sample()
+                 {
+                 	api = invokeurl
+                 	[
+                 		url :"https://api.api-ninjas.com/v1/quotes?category=happiness"
+                 		type :GET
+                 		headers:{'X-Api-Key':'YlG8tHHTndEaboSYvkrLvg==JK0BBpX6YK8IcFeo'}
+                 	];
+                 	info api.getJSON("quote");
+                 }
+			 }
+		 }
+
+
+
+
+		workflow
+		{
+		form
+		{
+			First_Time_Add_Country as "First Time Add Country"
+			{
+				type =  form
+				form = Form
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											all_country = Country[Country_Name != ""];
+										all_states = States[State_Name != ""];
+										if(all_country.count(Country_Name) == 0 && all_states.count(State_Name) == 0)
+										{
+											alert "exit";
+											thisapp.API_Country_And_States();
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Admin"
+			{
+				name = "Admin"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Admin \n"
+				ModulePermissions
+				{
+					States
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_States={"View","Edit","Delete"}
+						}
+					}
+					Country
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Countries={"View","Edit","Delete"}
+						}
+					}
+					Form
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Forms={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+				ModulePermissions
+				{
+					States
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_States={"View"}
+						}
+					}
+					Country
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Countries={"View"}
+						}
+					}
+					Form
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Forms={"View"}
+						}
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Admin"
+					{
+						description = "admin"
+						share data with peers = true
+					}
+				}
+			}
+			role Hierarchy = {Country,Form,States}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 11
+		icons = true
+		icons style = outline
+		font = "lato"
+		color options
+    	{
+        color = "1"
+    	}
+    	logo
+    	{
+        	preference = "none"
+        	placement = "left"
+    	}
+	}
+
+
+	phone
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = lightred
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+        	layout = slidingpane
+		 	icons style = outline
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = lightred
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

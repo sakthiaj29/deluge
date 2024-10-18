@@ -1,0 +1,51 @@
+//String function		
+		sentence=Zoho is one of the my fav Company.Catalyst is one of the Product of Zoho";
+		info sentence.getOccurenceCount("Zoho") ;
+
+		start=sentence.indexOf(" ");
+		end=sentence.lastIndexOf(" ");
+
+		if( sentence.subString(0,start).equals( sentence.subString(end) ) ){
+			info "Same" ;
+		}
+		else{
+			info "not same";
+		}
+		
+//Replace All	
+		sentence="Zoho is one of the my fav Company.Catalyst is one of the Product of Zoho";
+		sentence=sentence.replaceAll(" ","");	
+		
+//Get Prefix Words	
+		sentence="zoho is softwarecompany";
+		info sentence.getPrefixIgnoreCase("is") ;
+		
+//Count Number of Letters in Each Word 
+		sentence="Zoho is one of the my fav Company.Catalyst is one of the Product of Zoho";
+		for each val in sentence.toCollection(" ")
+		{
+			info val.len() ;
+		}
+	
+
+//Replace all number in sentence	
+		sentence="Try 2 be the best version of yourself 4 you";
+		info sentence.replaceAll("[0-9]", "");		
+		
+		
+//Find idem Position
+		stationary={"Pencil", "Eraser", "Ruler", "Pen", "Compass", "Marker"};
+		info stationary.indexOf("Ruler")+1;
+		
+//Remove some elements above list and add new list		
+		geometricalStationary={"Divider", "Protractor"};
+		stationary.removeElement( "Ruler" );
+		stationary.removeElement( "Compass" );
+		geometricalStationary.addAll(stationary);
+		info geometricalStationary ;
+
+//Add one list to add another list and print unique list		
+		motherslist={"Ketchup", "Water Bottle", "Milk", "Butter", "Chips", "Flour"};
+		armyslist={"Milk", "Chips", "Flour", "Chocolates", "Lip Stick"};
+		motherslist.addAll(armyslist);
+		info motherslist.distinct();		
