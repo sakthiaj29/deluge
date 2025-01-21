@@ -6,7 +6,7 @@
 //To Get Access Token And ref token
 resp = invokeurl
 	[
-		url :"https://accounts.zoho.in/oauth/v2/token?code=< permision code >&client_id=< my client id >&client_secret=< my client secret >&grant_type=authorization_code"
+		url :"https://accounts.zoho.in/oauth/v2/token?client_id=< my client id >&client_secret=< my client secret >&code=< permision code >&grant_type=authorization_code"
 		type :POST
 	];
 	info resp;
