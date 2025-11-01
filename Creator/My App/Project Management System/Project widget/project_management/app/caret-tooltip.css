@@ -1,0 +1,91 @@
+/* Keep your existing CSS as-is. These are additive utilities. */
+
+/* ---- Task title row layout ---- */
+.task-card .task-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Push status + caret to the far right (caret sits next to status) */
+.task-card .task-title .status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Caret icon (Lucide SVG will inherit this class) */
+.caret {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  vertical-align: middle;
+  transition: transform 0.18s ease;
+  cursor: pointer;
+  margin-left: 1px; /* sits just to the right of the status */
+}
+
+/* Rotated state */
+.caret.rotate {
+  transform: rotate(180deg);
+}
+
+/* Optional: make task-card clearly clickable */
+.task-card { cursor: pointer; }
+
+/* ---- Timesheet tooltip ---- */
+.ts-row {
+  position: relative;
+  cursor: help;
+}
+
+.ts-row:hover{
+  background-color: #d9fff5;
+}
+
+.employee-entry{
+  background-color: #f5fffd;
+}
+
+/* Bubble */
+.ts-row::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(8px);
+  background: rgba(17, 24, 39, 0.96); /* near-black */
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.35;
+  max-width: 360px;
+  white-space: pre-wrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease, transform .15s ease;
+  z-index: 20;
+}
+
+/* Little arrow */
+.ts-row::before {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2px);
+  right: 10px;
+  border: 6px solid transparent;
+  border-bottom-color: rgba(17, 24, 39, 0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease;
+  z-index: 21;
+}
+
+/* Show on hover */
+.ts-row:hover::after,
+.ts-row:hover::before {
+  opacity: 1;
+  visibility: visible;
+}

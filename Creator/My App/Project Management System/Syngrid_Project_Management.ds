@@ -1,0 +1,6243 @@
+/*
+ * Author       : assetmanagementsyngrid680
+ * Generated on : 03-Oct-2025 13:05:00
+ * Version      : 1.0
+ */
+ application "Syngrid Project Management"
+ {
+ 	date format = "dd/MM/yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "12-hr"
+ 	forms
+	{
+		form Client
+		{
+			success message = "Client Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Client_ID
+			(
+    			type = text
+				displayname = "Client ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Client_Name
+			(
+    			type = text
+				displayname = "Client Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Company_Name
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Contact_Person
+			(
+    			type = text
+				displayname = "Contact Person "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Stage
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Active","Trash"}
+				initial value = "Active"
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Department1
+		{
+			displayname = "Department"
+			success message = "Team Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique Department_Name
+			(
+    			type = text
+				displayname = "Department Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee
+		{
+			success message = "Employee Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique Employee_ID
+			(
+    			type = text
+				displayname = "Employee ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Department
+			(
+				type = picklist	
+				values  = Department1.ID
+    			displayformat = [Department_Name]
+				allow new entries
+				[
+					displayname = "Add New Department"
+				]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Role
+			(
+				type = picklist
+				maxchar = 100
+				values = {"CEO","Manager","Team Lead","HR","Team Member"}
+				initial value = "Team Member"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Position
+			(
+				type = picklist	
+				values  = Position.ID
+    			displayformat = [Add_Position]
+				allow new entries
+				[
+					displayname = "Add New Position"
+				]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Shift
+			(
+				type = picklist	
+				values  = Shift.ID
+    			displayformat = [Shift_Name + " / " + Start_Time + " -> " + End_Time]
+				allow new entries
+				[
+					displayname = "Add New Shift"
+				]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Stage
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Active","Trash"}
+				initial value = "Active"
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Position
+		{
+			success message = "Position Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Add_Position
+			(
+    			type = text
+				displayname = "Add Position"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Project
+		{
+			success message = "Data Added Successfully!"
+			Primary_Section
+			(
+				type = section
+				displayname = "Project Information"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Task_Task_Title
+			(
+				type = list	
+				displayname = "Task - Task Title"
+				values  = Task.ID
+    			bidirectional = Project
+    			displayformat = [Task_Title]
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Project_ID
+			(
+    			type = text
+				displayname = "Project ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Client
+			(
+				type = picklist	
+				values  = Client[Stage == "Active"].ID
+    			displayformat = [Client_ID + " - " + Client_Name]
+				allow new entries
+				[
+					displayname = "Add New Client"
+				]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique Project_Name
+			(
+    			type = text
+				displayname = "Project Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Project_Manager
+			(
+				type = picklist	
+				displayname = "Project Manager"
+				values  = Employee[Position.Add_Position.contains("manager")].ID
+    			displayformat = [Name + " - " + Email]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Assigned_To_Team_Lead
+			(
+				type = list	
+				displayname = "Assigned To Team Lead"
+				values  = Employee[Role == "Team Lead"].ID
+    			displayformat = [Name + " - " + Email]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Stage
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Active","Trash"}
+				initial value = "Active"
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Active","In Progress","On Hold","Completed","In Testing","Delayed","Cancelled"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Priority
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Low","Medium","High"}
+				initial value = "Medium"
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Budget
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Attachments
+			(
+    			type = upload file
+				displayname = "Attachments "
+    			file count = 10
+				browse = local_drive
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Reason
+		{
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Timesheet_ID
+			(
+    			type = text
+				displayname = "Timesheet ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reason
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Shift
+		{
+			success message = "Shift Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Shift_Name
+			(
+    			type = text
+				displayname = "Shift Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Section3
+			(
+				type = section
+				displayname = ""
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Start_Time
+			(
+    			type = time
+				displayname = "Start Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			End_Time
+			(
+    			type = time
+				displayname = "End Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Task
+		{
+			success message = "Task Added Successfully"
+			Task_Information
+			(
+				type = section
+				displayname = "Task Information"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Task_ID
+			(
+    			type = text
+				displayname = "Task ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Task_Title
+			(
+    			type = text
+				displayname = "Task Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Select
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Team Member","Team Lead"}
+				initial value = "Team Member"
+				layout = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Assigned_Employee
+			(
+				type = list	
+				displayname = " Assigned To"
+				values  = Employee[Role == input.Select].ID
+    			displayformat = [Name + " - " + Email]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Project
+			(
+				type = picklist	
+				values  = Project[Added_User == zoho.loginuser].ID
+    			bidirectional = Task_Task_Title
+    			displayformat = [Project_Name + " - " + Added_User]
+				advanced field search = true
+				sortorder = ascending
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Select1
+			(
+				type = radiobuttons
+				displayname = "Select"
+				maxchar = 100
+				values = {"Team Lead","Manager"}
+				initial value = "Team Lead"
+				layout = 2
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Assigned_By
+			(
+				type = picklist	
+				displayname = "Assigned By"
+				values  = Employee[Role == input.Select1].ID
+    			displayformat = [Name + " - " + Email]
+				sortorder = ascending
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = ""
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Actual_Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Work_Start_Date
+			(
+    			type = date
+				displayname = "Start Date1"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Priority
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Low","Medium","High"}
+				initial value = "Medium"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Open","In Progress","Completed","To be Testing","On Hold","Closed"}
+				initial value = "Open"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Actual_End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Work_End_Date
+			(
+    			type = date
+				displayname = "End Date1"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Section
+			(
+				type = section
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Estimated_Hours
+			(
+				type = number
+				displayname = "Estimated Hours"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Attachments
+			(
+    			type = upload file
+    			file count = 10
+				browse = local_drive
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Stage
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Active","Trash"}
+				initial value = "Active"
+				private = true
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Time_Log
+			(
+				type = grid
+				displayname = "Time Log"
+				values  = Timesheet.ID
+				sorttype = fieldbased
+				sort by
+				(
+					Date_field descending
+				)
+				viewtype = list
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Time
+		{
+			success message = "Time Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Dates
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			First_Checkin
+			(
+    			type = time
+				displayname = "First Checkin"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Last_Checkout
+			(
+    			type = time
+				displayname = "Last Checkout"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Checkin
+			(
+				type = grid
+				Time
+				(
+    				type = time
+					timedisplayoptions = "hh:mm" 
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Checkout
+			(
+				type = grid
+				Time
+				(
+    				type = time
+					timedisplayoptions = "hh:mm" 
+					width = medium
+				)
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Timesheet
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Timesheet_Name
+			(
+    			type = text
+				displayname = "Timesheet Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee
+			(
+				type = picklist	
+				values  = Employee[Stage == "Active"].ID
+    			displayformat = [Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Status
+			(
+    			type = text
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Hours_Worked
+			(
+				type = section
+				displayname = "Hours Worked"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Hour
+			(
+				type = number
+				initial value = 0
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Minutes
+			(
+				type = number
+				initial value = 0
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = ""
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Notes
+			(
+    			type = textarea
+				height = 100px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list My_Project_Report
+		{
+			displayName = "My Project Report"
+			show all rows from Project  [Added_User == zoho.loginuser && Stage == "Active"]  
+			(
+				Project_Name as "Project Name"
+				Project_ID as "Project ID"
+				Description
+				Status
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Priority
+				Attachments as "Attachments "
+				Project_Manager as "Project Manager"
+				custom action "Add Task"
+				(
+	  			workflow = Add_Task
+				show action in view header = true
+				show action in edit record menu = true
+				column header = "Add Task"
+				condition = (Status != "Completed" && Status != "Cancelled")
+				)
+				Assigned_To_Team_Lead as "Assigned To Team Lead"
+				Added_User as "Added User"
+				Task_Task_Title as "Task - Task Title"
+			)
+			custom actions
+			(
+				"Delete Project"
+				(
+	  			workflow = Delete_Project1
+				show action in view header = true
+				show action in edit record menu = true
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to delete this project?"
+					message for multiple records = "Are you sure you want to delete the selected project?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			conditional formatting
+			(
+				"Low Priority"
+				{
+				condition = (Priority == "Low")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#4caf50;"
+				}
+				"Medium Priority"
+				{
+				condition = (Priority == "Medium")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#ff9800;"
+				}
+				"High Priority"
+				{
+				condition = (Priority == "High")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#ef166f;"
+				}
+				"In Progress"
+				{
+				condition = (Status == "In Progress")
+				fields = [Status]
+				format = "font-weight:bold;color:#007bff;"
+				}
+				"Completed"
+				{
+				condition = (Status == "Completed")
+				fields = [Status]
+				format = "font-weight:bold;color:#048f04;"
+				}
+				"In Testing"
+				{
+				condition = (Status == "In Testing")
+				fields = [Status]
+				format = "font-weight:bold;color:#6f42c1;"
+				}
+				"Active"
+				{
+				condition = (Status == "Active")
+				fields = [Status]
+				format = "font-weight:bold;color:#2ec953;"
+				}
+				"On Hold"
+				{
+				condition = (Status == "On Hold")
+				fields = [Status]
+				format = "font-weight:bold;color:#ffc107;"
+				}
+				"Cancelled"
+				{
+				condition = (Status == "Cancelled")
+				fields = [Status]
+				format = "font-weight:bold;color:#dc3545;"
+				}
+				"Delayed"
+				{
+				condition = (Status == "Delayed")
+				fields = [Status]
+				format = "font-weight:bold;color:#fd7e14;"
+				}
+			)
+		}
+		default list All_Employees
+		{
+			displayName = "All Employees"
+			show all rows from Employee  [Stage == "Active"]  
+			(
+				Name
+				(
+					width = 149px
+				)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Email
+				(
+					width = 288px
+				)
+				Employee_ID as "Employee ID"
+				(
+					width = 130px
+				)
+				Role
+				(
+					width = 162px
+				)
+				Position
+				(
+					width = 309px
+				)
+				Department
+				(
+					width = 168px
+				)
+				Shift
+			)
+			custom actions
+			(
+				"Delete Employee"
+				(
+	  			workflow = Delete_Employee
+				show action in view header = true
+				show action in edit record menu = true
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to delete this employee?"
+					message for multiple records = "Are you sure you want to delete the selected ${record_count} employee?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			conditional formatting
+			(
+				"Team Lead"
+				{
+				condition = (Role.contains("Team Lead"))
+				fields = [Role]
+				format = "font-weight:bold;color:#ce2232;"
+				}
+				"Team member"
+				{
+				condition = (Role.contains("Team Member"))
+				fields = [Role]
+				format = "font-weight:bold;color:#219e4a;"
+				}
+				"Manager"
+				{
+				condition = (Role.contains("Manager"))
+				fields = [Role]
+				format = "font-weight:bold;color:#0974b0;"
+				}
+				"CEO"
+				{
+				condition = (Role.contains("CEO"))
+				fields = [Role]
+				format = "font-weight:bold;color:#e0cb26;"
+				}
+				"HR"
+				{
+				condition = (Role.contains("HR"))
+				fields = [Role]
+				format = "font-weight:bold;color:#cf2b7d;"
+				}
+				"New Formatting"
+				{
+				condition = (Position.Add_Position.contains("	Business Development Manager"))
+				fields = [Position]
+				format = "font-weight:bold;color:#2eb79f;"
+				}
+			)
+		}
+		default list All_Tasks
+		{
+			displayName = "All Tasks"
+			show all rows from Task    
+			(
+				Task_Title as "Task Title"
+				(
+					width = 94px
+				)
+				Description
+				Task_ID as "Task ID"
+				(
+					width = 90px
+				)
+				Status
+				(
+					width = 93px
+				)
+				Actual_Start_Date as "Start Date"
+				(
+					width = 101px
+				)
+				Actual_End_Date as "End Date"
+				(
+					width = 101px
+				)
+				Assigned_Employee as " Assigned To"
+				(
+					width = 231px
+				)
+				Priority
+				Auto_Number as "Auto Number"
+				Estimated_Hours as "Estimated Hours"
+				(
+					width = 128px
+				)
+				Attachments
+				Project
+				(
+					width = 217px
+				)
+				custom action "View Task"
+				(
+	  			workflow = Add_Timesheet
+				show action in view header = true
+				show action in edit record menu = true
+				column header = "View Task"
+				)
+				ID
+				(
+					width = 164px
+				)
+				Assigned_By as "Assigned By"
+				Work_End_Date as "End Date1"
+				Work_Start_Date as "Start Date1"
+				Time_Log as "Time Log"
+				(
+					view = All_Timesheet
+					field = Time_Log.Auto_Number + "," + Time_Log.Date_field + "," + Time_Log.Hour + "," + Time_Log.Minutes + "," + Time_Log.Notes + "," + Time_Log.Status + "," + Time_Log.Timesheet_Name
+				)
+				Select
+				Select1 as "Select"
+			)
+			conditional formatting
+			(
+				"New Formatting"
+				{
+				condition = (Status == "Completed")
+				fields = [Status]
+				format = "background-color:#f27d9b;"
+				}
+				"New Formatting"
+				{
+				condition = (Status == "In Progress")
+				fields = [Status]
+				format = "background-color:#ffc107;"
+				}
+				"New Formatting"
+				{
+				condition = (Status == "Yet to Start")
+				fields = [Status]
+				format = "background-color:#81c2e3;"
+				}
+				"New Formatting"
+				{
+				fields = [Estimated_Hours]
+				format = "font-weight:bold;color:#2eb79f;"
+				}
+				"New Formatting"
+				{
+				fields = [Actual_Start_Date]
+				format = "color:#0d0101;"
+				}
+				"New Formatting"
+				{
+				fields = [Actual_End_Date]
+				format = "color:#ef1616;background-color:#ffffff;"
+				}
+				"New Formatting"
+				{
+				fields = [Task_Title]
+				format = "color:#080000;background-color:#ffffff;"
+				}
+				"New Formatting"
+				{
+				fields = [Task_ID]
+				format = "font-weight:bold;color:#2f78d0;background-color:#ffffff;"
+				}
+				"New Formatting"
+				{
+				condition = (Status == "Open")
+				fields = [Status]
+				format = "background-color:##aee8da;"
+				}
+			)
+		}
+		default list All_Positions
+		{
+			displayName = "All Positions"
+			show all rows from Position    
+			(
+				Add_Position as "Add Position"
+			)
+		}
+		default list All_Clients
+		{
+			displayName = "All Clients"
+			show all rows from Client  [Stage == "Active"]  
+			(
+				Client_Name as "Client Name"
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Company_Name as "Company Name"
+				Contact_Person as "Contact Person "
+				Client_ID as "Client ID"
+				Auto_Number as "Auto Number"
+			)
+			custom actions
+			(
+				"Delete Client"
+				(
+	  			workflow = Delete_Client
+				show action in view header = true
+				show action in edit record menu = true
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to delete the this client?"
+					message for multiple records = "Execute the Delete Client action for the selected ${record_count} records?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+		}
+		default list Timesheet_Report
+		{
+			displayName = "Timesheet Report"
+			show all rows from Timesheet    
+			(
+				Employee
+				(
+					view = All_Employees
+				)
+				Date_field as "Date"
+				Hour
+				Minutes
+				Notes
+				Timesheet_Name as "Timesheet Name"
+				Employee.Department
+				Status
+				Auto_Number as "Auto Number"
+			)
+			group by
+			(
+				Employee.Department ascending
+				Employee ascending
+			)
+		}
+		kanban Project_Status
+		{
+			displayName = "Project Status"
+			show all rows from Project    
+			(
+				Auto_Number as "Auto Number"
+				Project_ID as "Project ID"
+				Project_Name as "Project Name"
+				Client
+				(
+					view = All_Clients
+				)
+				Project_Manager as "Project Manager"
+				(
+					view = All_Employees
+				)
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Status
+				Priority
+				Budget
+				Description
+				Attachments as "Attachments "
+				Stage
+			)
+			options
+			(
+	 			display field = Status
+	 		)
+		}
+		list Managers
+		{
+			displayName = "Managers"
+			show all rows from Employee  [Role == "Manager"]  
+			(
+				Employee_ID as "Employee ID"
+				Name
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Role
+				Position
+			)
+			conditional formatting
+			(
+				"New Formatting"
+				{
+				condition = (Position.Add_Position.contains("Technical Team Manager"))
+				fields = [Position]
+				format = "font-weight:bold;color:#a811cc;background-color:#d4a2e8;"
+				}
+				"New Formatting"
+				{
+				condition = (Position.Add_Position.contains("Business Development Manager"))
+				fields = [Position]
+				format = "font-weight:bold;color:#11b1cc;background-color:#abe4f6;"
+				}
+				"New Formatting"
+				{
+				condition = (Role == "Manager")
+				fields = [Role]
+				format = "font-weight:bold;color:#e04a90;"
+				}
+			)
+		}
+		list Team_Lead
+		{
+			displayName = "Team Lead"
+			show all rows from Employee  [Role == "Team Lead"]  
+			(
+				Employee_ID as "Employee ID"
+				Name
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Role
+				Position
+			)
+		}
+		list All_Timesheet
+		{
+			displayName = "All Timesheet"
+			show all rows from Timesheet    
+			(
+				Timesheet_Name as "Timesheet Name"
+				Date_field as "Date"
+				Employee
+				Hour
+				Minutes
+				Notes
+				Status
+			)
+		}
+		default list All_Department
+		{
+			displayName = "All Department"
+			show all rows from Department1    
+			(
+				Department_Name as "Department Name"
+				ID
+			)
+		}
+		list Zoho_Team_Report
+		{
+			displayName = "Zoho Team Report"
+			show all rows from Timesheet    
+			(
+				Timesheet_Name as "Timesheet Name"
+				Date_field as "Date"
+				Employee
+				Hour
+				Minutes
+				Notes
+				Employee.Name
+				Status
+			)
+			group by
+			(
+				Employee.Name ascending
+			)
+		}
+		list Trash_Project
+		{
+			displayName = "Trash Project"
+			show all rows from Project  [Stage == "Trash"]  
+			(
+				Task_Task_Title as "Task - Task Title"
+				Auto_Number as "Auto Number"
+				Project_ID as "Project ID"
+				Client
+				Project_Name as "Project Name"
+				Project_Manager as "Project Manager"
+				Assigned_To_Team_Lead as "Assigned To Team Lead"
+				Start_Date as "Start Date"
+				Stage
+				Status
+				Priority
+				Budget
+				Attachments as "Attachments "
+				End_Date as "End Date"
+				Description
+			)
+			custom actions
+			(
+				"Restore"
+				(
+	  			workflow = restore
+				show action in view header = true
+				show action in edit record menu = true
+				)
+			)
+		}
+		list All_Project
+		{
+			displayName = "All Project"
+			show all rows from Project    
+			(
+				Task_Task_Title as "Task - Task Title"
+				Auto_Number as "Auto Number"
+				Project_ID as "Project ID"
+				Client
+				Project_Name as "Project Name"
+				Project_Manager as "Project Manager"
+				Assigned_To_Team_Lead as "Assigned To Team Lead"
+				Start_Date as "Start Date"
+				Status
+				Priority
+				Budget
+				Attachments as "Attachments "
+				End_Date as "End Date"
+				Description
+				Added_User as "Added User"
+				Stage
+			)
+			custom actions
+			(
+				"Delete Project"
+				(
+	  			workflow = Delete_Project
+				show action in view header = true
+				show action in edit record menu = true
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to delete this project?"
+					message for multiple records = "Are you sure you want to delete the selected project?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			conditional formatting
+			(
+				"In Progress"
+				{
+				condition = (Status == "In Progress")
+				fields = [Status]
+				format = "font-weight:bold;color:#007bff;"
+				}
+				"Cancelled"
+				{
+				condition = (Status == "Cancelled")
+				fields = [Status]
+				format = "font-weight:bold;color:#dc3545;"
+				}
+				"In Testing"
+				{
+				condition = (Status == "In Testing")
+				fields = [Status]
+				format = "font-weight:bold;color:#6f42c1;"
+				}
+				"New Formatting"
+				{
+				condition = (Status == "Active")
+				fields = [Status]
+				format = "font-weight:bold;color:#16d0ef;"
+				}
+				"High Priority"
+				{
+				condition = (Priority == "High")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#ef166f;"
+				}
+				"Medium Priority"
+				{
+				condition = (Priority == "Medium")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#ff9800;"
+				}
+				"Low Priority"
+				{
+				condition = (Priority == "Low")
+				fields = [Priority]
+				format = "font-weight:bold;color:#ffffff;background-color:#4caf50;"
+				}
+				"Completed"
+				{
+				condition = (Status == "Completed")
+				fields = [Status]
+				format = "font-weight:bold;color:#048f04;"
+				}
+				"Active"
+				{
+				condition = (Status == "Active")
+				fields = [Status]
+				format = "font-weight:bold;color:#2ec953;"
+				}
+				"On Hold"
+				{
+				condition = (Status == "On Hold")
+				fields = [Status]
+				format = "color:#ffc107;"
+				}
+				"Delayed"
+				{
+				condition = (Status == "Delayed")
+				fields = [Status]
+				format = "color:#fd7e14;"
+				}
+			)
+		}
+		list Trash_Task
+		{
+			displayName = "Trash Task"
+			show all rows from Task  [Added_User == zoho.loginuser && Stage == "Trash"]  
+			(
+				Auto_Number as "Auto Number"
+				Project
+				Task_ID as "Task ID"
+				Task_Title as "Task Title"
+				Assigned_Employee as " Assigned To"
+				Actual_Start_Date as "Start Date"
+				Priority
+				Status
+				Actual_End_Date as "End Date"
+				Description
+				Estimated_Hours as "Estimated Hours"
+				Attachments
+				Stage
+			)
+			custom actions
+			(
+				"Restore"
+				(
+	  			workflow = Restore2
+				show action in view header = true
+				show action in edit record menu = true
+				)
+			)
+		}
+		list Trash_Employee
+		{
+			displayName = "Trash Employee"
+			show all rows from Employee  [Stage == "Trash"]  
+			(
+				Employee_ID as "Employee ID"
+				Name
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Department
+				Role
+				Position
+				Stage
+			)
+			custom actions
+			(
+				"Restore"
+				(
+	  			workflow = Restore1
+				show action in view header = true
+				show action in edit record menu = true
+				)
+			)
+		}
+		list My_Task
+		{
+			displayName = "My Task"
+			show all rows from Task  [Stage == "Active" && Assigned_Employee.Email == zoho.loginuserid || Added_User == zoho.loginuser]  
+			(
+				Auto_Number as "Auto Number"
+				Project
+				Task_ID as "Task ID"
+				Task_Title as "Task Title"
+				Assigned_Employee as " Assigned To"
+				Actual_Start_Date as "Start Date"
+				Priority
+				Status
+				Actual_End_Date as "End Date"
+				Description
+				Estimated_Hours as "Estimated Hours"
+				Attachments
+				Assigned_By as "Assigned By"
+			)
+			custom actions
+			(
+				"Delete Task"
+				(
+	  			workflow = Delete_Task
+				show action in view header = true
+				show action in edit record menu = true
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to delete this task?"
+					message for multiple records = "Are you sure you want to delete the selected ${record_count} task?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			conditional formatting
+			(
+				"Low Priority"
+				{
+				condition = (Priority == "Low")
+				fields = [Priority]
+				format = "color:#ffffff;background-color:#5acc5e;"
+				}
+				"Medium Priority"
+				{
+				condition = (Priority == "Medium")
+				fields = [Priority]
+				format = "color:#ffffff;background-color:#fa9f16;"
+				}
+				"High Priority"
+				{
+				condition = (Priority == "High")
+				fields = [Priority]
+				format = "color:#ffffff;background-color:#f22279;"
+				}
+				"Open"
+				{
+				condition = (Status == "Open")
+				fields = [Status]
+				format = "font-weight:bold;color:#f27d9b;"
+				}
+				"In Progress"
+				{
+				condition = (Status == "In Progress")
+				fields = [Status]
+				format = "font-weight:bold;color:#007bff;"
+				}
+				"Completed"
+				{
+				condition = (Status == "Completed")
+				fields = [Status]
+				format = "font-weight:bold;color:#048f04;"
+				}
+				"To be Testing"
+				{
+				condition = (Status == "To be Testing")
+				fields = [Status]
+				format = "font-weight:bold;color:#6f42c1;"
+				}
+				"Oh Hold"
+				{
+				condition = (Status == "On Hold")
+				fields = [Status]
+				format = "font-weight:bold;color:#ffc107;"
+				}
+				"Closed"
+				{
+				condition = (Status == "Closed")
+				fields = [Status]
+				format = "font-weight:bold;color:#dc3545;"
+				}
+			)
+		}
+		list Trash_Client
+		{
+			displayName = "Trash Client"
+			show all rows from Client  [Stage == "Trash"]  
+			(
+				Client_ID as "Client ID"
+				Client_Name as "Client Name"
+				Company_Name as "Company Name"
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Person as "Contact Person "
+				Stage
+			)
+		}
+		list Task_Lead_form_report
+		{
+			displayName = "Task Lead form report"
+			show all rows from Task    
+			(
+				Auto_Number as "Auto Number"
+				Project
+				Task_ID as "Task ID"
+				Task_Title as "Task Title"
+				Assigned_Employee as " Assigned To"
+				Actual_Start_Date as "Start Date"
+				Priority
+				Status
+				Actual_End_Date as "End Date"
+				Description
+				Estimated_Hours as "Estimated Hours"
+				Attachments
+				Stage
+			)
+		}
+		default list All_Time
+		{
+			displayName = "All Time"
+			show all rows from Time    
+			(
+				Dates as "Date"
+				Name
+				Checkin.Time as "Checkin"
+				Checkout.Time as "Checkout"
+				Email
+				ID
+				First_Checkin as "First Checkin"
+				Last_Checkout as "Last Checkout"
+			)
+		}
+		list All_Employee_Attendance
+		{
+			displayName = "All Employee Attendance"
+			show all rows from Time    
+			(
+				Name
+				Dates as "Date"
+				Email
+				Checkin.Time as "Checkin"
+				Checkout.Time as "Checkout"
+			)
+		}
+		default list All_Shifts
+		{
+			displayName = "All Shifts"
+			show all rows from Shift    
+			(
+				Shift_Name as "Shift Name"
+				End_Time as "End Time"
+				Start_Time as "Start Time"
+			)
+		}
+		list My_Timesheet
+		{
+			displayName = "My Timesheet"
+			show all rows from Timesheet    
+			(
+				Auto_Number as "Auto Number"
+				Timesheet_Name as "Timesheet Name"
+				Status
+				Date_field as "Date"
+				Employee
+				Hour
+				Minutes
+				Notes
+				Employee.Department
+			)
+			group by
+			(
+				Employee.Department ascending
+				Employee ascending
+			)
+		}
+	}
+	pages
+	{
+		page Dashboard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='20%'\n   \t>\n\t<panel elementName='Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#3F3F3F'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#3F3F3F'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Added_User == zoho.loginuser'\n\t  value = 'thisapp.Project.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3F3F3F'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tcomponentLinkName = 'All_Project'\n\t\ttarget = 'new-window'\n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Total Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='20%'\n   \t>\n\t<panel elementName='Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#951FB8'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#3F3F3F'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Added_User == zoho.loginuser &amp;&amp; Status == &quot;Not Started&quot;'\n\t  value = 'thisapp.Project.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#951FB8'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tcomponentLinkName = 'All_Project'\n\t\ttarget = 'new-window'\n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Not Started Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='20%'\n   \t>\n\t<panel elementName='Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#4C7DE8'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#4C7DE8'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Added_User == zoho.loginuser &amp;&amp; Status == &quot;In Progress&quot;'\n\t  value = 'thisapp.Project.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tbgColor = '#286BDC'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'In Progress Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='20%'\n   \t>\n\t<panel elementName='Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#0ABB51'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#0ABB51'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Added_User == zoho.loginuser &amp;&amp; Status == &quot;Completed&quot;'\n\t  value = 'thisapp.Project.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tbgColor = '#0ABB51'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Completed Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='20%'\n   \t>\n\t<panel elementName='Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Added_User == zoho.loginuser &amp;&amp; Status == &quot;Cancelled&quot;'\n\t  value = 'thisapp.Project.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tbgColor = '#FF4C2F'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Cancel Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<board\n    \n\tbgColor = '#FFFFFF'\n        bgColorType = 'solid'\n\tpadding = '0px'\nelementName='Board'\n    layoutType = 'grid'\n        items = '1'\n    appLinkName = 'thisapp'\n    formLinkName = 'Employee'\n    rankBy = 'ID'\n    rankOrder = 'highestToLowest'\n    rankAggregate = 'count'\n    limit = '3'\n    groupBy = 'Department'\n>\n<boardHeader>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '10px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '14px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Team - Project Rank'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/boardHeader>\n<boardLayout\n                paddingRight = '15px'\n                paddingBottom = '14px'\n                paddingLeft = '15px'\n                paddingTop = '2px'\n                itemGap = '10px'\n>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n    borderColor = '#F2F2F2'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\n\t\twidth = '33%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginBottom = '10px'\n\tcolor = '#555555'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Rank'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = 'theme'\n\tsize = '19px'\n\tbold = 'true' \n\ttype = 'boardData'\n\n\n    lineHeight = '22'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'rank'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpadding = '10px'\n\n\t\twidth = '34%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '10px'\n\tmarginTop = '0px'\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\tcolor = '#000000'\n\tbgColor = '#F7F7FB'\n\twidth = '45px'\n\theight = '45px'\n\ttype = 'icon'\n\tvalue = 'users-single-03'\n\tsize = '20px'\n\tcornerRadius = '23px'\n\ticonType = 'outline'\n\/>\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#000000'\n\tsize = '16px'\n\ttype = 'boardData'\n\n\n    lineHeight = '18'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'groupedField'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpadding = '10px'\n\n\t\twidth = '33%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '10px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#555555'\n\tsize = '15px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#555555'\n    borderWidth = '0px'\n\n\t  value = 'Project'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = 'theme'\n\tsize = '19px'\n\tbold = 'true' \n\ttype = 'boardData'\n\n\n    lineHeight = '22'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'rankAggregate'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/boardLayout>\n<\/board>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<chart \n\telementName='Chart 4'\n\n\ttype = 'Semi Donut'\n\txtitle = 'Priority'\n\tytitle = 'Count'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme2'\n\tlegendPos = 'center.top'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Project'\n\txfield = 'Priority'\n\tyfields = 'count:Priority'\n\t\tDelugeCriteria = 'Added_User == zoho.loginuser'\n\/>\n\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Project_Dashboard
+		{
+			displayname = "Project Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\tbgColor='#FFF5F5'\n\t\t\n\t\t\twebDeviceConfig='{\"layout\":{\"displayType\":\"card\",\"design\":\"fluid\",\"style\":\"padding-right:0px;padding-top:0px;padding-bottom:0px;padding-left:0px;\"}}'\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Employee_Dashboard
+		{
+			displayname = "Employee Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel'\n \n\t\n\ttitle = 'My Dashboard Details'\n\t\n\t\ttitleColor = '#444444'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#91A8FA'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '33px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Assigned_Employee.Email == zoho.loginuserid'\n\t  value = 'thisapp.Task.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#4C7DE8'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Total Tasks'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#7CE1C4'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '36px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#4C7DE8'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Assigned_Employee.Email == zoho.loginuserid &amp;&amp; Status == &quot;Completed&quot;'\n\t  value = 'thisapp.Task.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#10B981'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Tasks Completed'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FACD89'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '36px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#4C7DE8'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Assigned_Employee.Email == zoho.loginuserid &amp;&amp; Status == &quot;In Progress&quot;'\n\t  value = 'thisapp.Task.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EDA11F'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Tasks Pending'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='23%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#61BDD4'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '36px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#4C7DE8'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Assigned_Employee.Email == zoho.loginuserid'\n\t  value = 'thisapp.Task.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#208A91'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Total Projects'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='0%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#3F3F3F'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '20'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tbgColor = '#3F3F3F'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Blaze'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 5'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFA0A8'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '36px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#4C7DE8'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Assigned_Employee.Email == zoho.loginuserid &amp;&amp; Status == &quot;Open&quot;'\n\t  value = 'thisapp.Task.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#E83C59'\n\n    borderColor = '#444444'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '20px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tbold = 'true' \n\tfontFamily = 'arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\n\t  value = 'Upcoming Tasks'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<chart \n\telementName='Task Chart'\n\n\ttype = 'Pie'\n\txtitle = 'Priority'\n\tytitle = 'Task Count'\n\tbgColor = '#E1E6F7'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Task'\n\txfield = 'Priority'\n\tyfields = 'count:Priority'\n\tquickFilters = 'Project.Project_Name'\n\t\tDelugeCriteria = 'Assigned_Employee.Email == zoho.loginuserid'\n\/>\n\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page taskboard
+		{
+			displayname = "taskboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Attendance
+		{
+			displayname = "Attendance"
+			Content="<zml    \t\t\n\t\t\n\t\t\tbgColor='#FFF5F5'\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Test
+		{
+			displayname = "Test"
+			Content="<zml    \t\t\n\t\t\n\t\t\tbgColor='#FFF5F5'\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+	variables
+	{
+		thisapp.variables.checkin_or_checkout = "checkout";
+	}
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 string GetVariable()
+                 {
+                 	return thisapp.variables.checkin_or_checkout;
+                 }
+				 void Test()
+                 {
+                 	info zoho.appname;
+                 	info "https://creator.zoho.in" + zoho.appuri + "#Report:Project_Report?Project_ID=PRJT-49";
+                 	// 	all_times = Time[ID != 0 && Dates == zoho.currentdate];
+                 	// 	for each  time in all_times
+                 	// 	{
+                 	// 		// 		if( time.Checkin.Time!=null && time.Checkout.Time!=null ){
+                 	// 		// 		}
+                 	// 		employee = Employee[Email == time.Email];
+                 	// 		Shift = Shift[ID == employee.Shift];
+                 	// 		info "Start Time " + Shift.Start_Time.toString();
+                 	// 		info "End Time " + Shift.End_Time.toString();
+                 	// 		info time.Email.concat(",   Check in ").concat(time.Checkin.Time.toString()).concat(",   Check out ").concat(time.Checkout.Time.toString());
+                 	// 	}
+                 }
+				 string subformTime.getEndTime(collection times)
+                 {
+                 	last = "";
+                 	for each  time in times
+                 	{
+                 		last = time;
+                 	}
+                 	return last;
+                 }
+				 string subformTime.getFirstTime(collection times, time shift_start_time)
+                 {
+                 	return "";
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			Hide_Project_ID as "Hide Project ID"
+			{
+				type =  form
+				form = Project
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Project_ID;
+					}
+				}
+
+			}
+			Create_Project_ID as "Create Project ID"
+			{
+				type =  form
+				form = Project
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Project_ID = "PRJT-" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Test_Notify as "Test Notify"
+			{
+				type =  form
+				form = Project
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											manager = Employee[Email == zoho.loginuserid];
+										// info input.Assigned_To_Team_Lead.Email;
+										// res = zoho.pushNotification("sakthiaj2912@gmail.com",manager.Name + " has assigned you a new project – " + input.Project_Name,"Due Date: " + input.End_Date + " \nClick here to view details","Project_Report",input.ID);
+										// info res;
+										//----------------------------------------------
+										projet_link = "https://creator.zoho.in" + zoho.appuri + "#Report:Project_Report?Project_ID=" + input.Project_ID;
+										all_projet_link = "https://creator.zoho.in" + zoho.appuri + "#Report:Project_Report";
+										massage = "";
+										massage = massage + "<div style='max-width:600px;margin:20px auto;background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.08);font-family:Arial,sans-serif;color:#333;'>";
+										massage = massage + "  <div style='padding:18px 22px;background:#0b74de;color:#fff;text-align:left;font-size:18px;font-weight:bold;'>New project assigned</div>";
+										massage = massage + "  <div style='padding:20px;'>";
+										massage = massage + "    <p style='margin:0 0 12px 0;'>Hi,</p>";
+										massage = massage + "    <p style='font-size:13px;color:#666;margin-bottom:12px;'>You have been assigned a new project by <strong>" + manager.Name + "</strong>.</p>";
+										massage = massage + "    <div style='margin-bottom:10px;'><span style='font-weight:600;color:#444;'>Project:</span> " + input.Project_Name + "</div>";
+										massage = massage + "    <div style='margin-bottom:10px;'><span style='font-weight:600;color:#444;'>Start Date:</span> " + input.Start_Date + "</div>";
+										massage = massage + "    <div style='margin-bottom:10px;'><span style='font-weight:600;color:#444;'>Due Date:</span> " + input.End_Date + "</div>";
+										massage = massage + "    <div style='margin-bottom:10px;'><span style='font-weight:600;color:#444;'>Priority:</span> " + input.Priority + "</div>";
+										massage = massage + "    <a href='" + projet_link + "' target='_blank' rel='noopener' style='display:inline-block;padding:10px 16px;background:#0b74de;color:#fff;text-decoration:none;border-radius:6px;margin-top:12px;'>View Project</a>";
+										massage = massage + "    <p style='margin:16px 0 0 0;color:#555;'>Description: " + input.Description + "</p>";
+										massage = massage + "    <a href='" + all_projet_link + "' target='_blank' rel='noopener' style='display:inline-block;padding:10px 16px;background:#28a745;color:#fff;text-decoration:none;border-radius:6px;margin-top:12px;'>All Projects</a>";
+										massage = massage + "  </div>";
+										massage = massage + "  <div style='font-size:12px;color:#888;padding:14px 20px;background:#fbfbfb;text-align:center;'>This is an automated message from MAASI Syngrid Tech Private Limited. Reply to your manager for questions.</div>";
+										massage = massage + "</div>";
+										// massage="";
+										// massage=massage+"   <div class=\"container\" role=\"artic\" aria-label=\"New project assigned notification\">";
+										// massage=massage+"     <div class=\"header\">";
+										// massage=massage+"       New project assigned";
+										// massage=massage+"     </div>";
+										// massage=massage+"     <div class=\"content\">";
+										// massage=massage+"       <p style=\"margin:0 0 12px 0;\">Hi,</p>";
+										// massage=massage+"       <p class=\"meta\">You have been assigned a new project by <strong>"+manager.Name+"</strong>.</p>";
+										// massage=massage+"       <div class=\"row\"><span class=\"label\">Project:</span> "+input.Project_Name+"</div>";
+										// massage=massage+"       <div class=\"row\"><span class=\"label\">Start Date:</span> "+input.Start_Date+"</div>";
+										// massage=massage+"       <div class=\"row\"><span class=\"label\">Due Date:</span> "+input.End_Date+"</div>";
+										// massage=massage+"       <div class=\"row\"><span class=\"label\">Priority:</span> "+input.Priority+"</div>";
+										// massage=massage+"       <a class=\"cta\" href="+projet_link+" target=\"_blank\" rel=\"noopener\">View Project</a>";
+										// massage=massage+"       <p style=\"margin:16px 0 0 0;color:#555;\">Description: "+input.Description+"</p>";
+										// massage=massage+"       <a class=\"cta cta1\" href="+all_projet_link+" target=\"_blank\" rel=\"noopener\">All Project</a>";
+										// massage=massage+"     </div>";
+										// massage=massage+"     <div class=\"footer\">";
+										// massage=massage+"       This is an automated message from MAASI Syngrid Tech Private Limited. Reply to your manager for questions.";
+										// massage=massage+"     </div>";
+										// massage=massage+"   </div>";
+										// massage=massage+"     <style>";
+										// massage=massage+"     body { margin:0; padding:0; font-family: Arial, sans-serif; background:#f4f6f8; color:#333; }";
+										// massage=massage+"     .container { max-width:600px; margin:20px auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08); }";
+										// massage=massage+"     .header { padding:18px 22px; background:#0b74de; color:#fff; text-align:left; }";
+										// massage=massage+"     .content { padding:20px; }";
+										// massage=massage+"     .meta { font-size:13px; color:#666; margin-bottom:12px; }";
+										// massage=massage+"     .cta { display:inline-block; padding:10px 16px; background:#0b74de; color:#fff; text-decoration:none; border-radius:6px; margin-top:12px; }";
+										// massage=massage+"     .cta1 { background:#28a745;  }";
+										// massage=massage+"     .row { margin-bottom:10px; }";
+										// massage=massage+"     .label { font-weight:600; color:#444; }";
+										// massage=massage+"     .footer { font-size:12px; color:#888; padding:14px 20px; background:#fbfbfb; text-align:center; }";
+										// massage=massage+"     @media (max-width:480px){ .container{ margin:10px; } .header{ padding:14px; } .content{ padding:16px; } }";
+										// massage=massage+"   </style>";
+										// for each id in input.Assigned_To_Team_Lead
+										// {
+										// 	info id.Email;
+										// }
+										for each  id in input.Assigned_To_Team_Lead
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :id.Email
+												subject :manager.Name + " has assigned you a new project – " + input.Project_Name
+												message :massage
+											]
+										}
+						)
+					}
+				}
+
+			}
+			Set_Project_Manager as "Set Project Manager"
+			{
+				type =  form
+				form = Project
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											manager = Employee[Role == "Manager" && Email == zoho.loginuserid];
+										input.Project_Manager = manager.ID;
+						)
+					}
+				}
+
+			}
+			Notify_Task_Assigned as "Notify Task Assigned"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  emp in input.Assigned_Employee
+										{
+											if(emp != null)
+											{
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :emp.Email
+													subject :"New Task Assigned: " + input.Task_Title
+													message :"Hello " + emp.Name + ",<br><br>" + "You have been assigned a new task.<br><br>" + "<b>Project:</b> " + input.Project.Project_Name + "<br>" + "<b>Task:</b> " + input.Task_Title + "<br>" + "Please log in to the Project Management app for more details."
+												]
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Notify_Task as "Notify Task"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											res = zoho.pushNotification("sujitham3030@gmail.com","New Task Assigned","You have been assigned a new task","All_Tasks",input.ID);
+										info res;
+						)
+					}
+				}
+
+			}
+			Hide_Fields as "Hide Fields"
+			{
+				type =  form
+				form = Project
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Task_Task_Title,Stage;
+					}
+				}
+
+			}
+			Check_End_Date as "Check End Date"
+			{
+				type =  form
+				form = Project
+				record event = on add or edit
+
+				on user input of End_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Start_Date != null)
+										{
+											if(input.Start_Date > input.End_Date)
+											{
+												alert "End Date must be after the Start Date!";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Validate_End_Date1 as "Validate End Date"
+			{
+				type =  form
+				form = Project
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Start_Date != null && input.End_Date != null)
+										{
+											if(input.Start_Date > input.End_Date)
+											{
+												alert "End Date must be after the Start Date!";
+											}
+										}
+										else
+										{
+											alert "Enter Valide Dates!";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Time_Log1 as "Hide Time Log"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						hide Time_Log;
+					}
+				}
+
+			}
+			Show_TimeLog as "Show TimeLog"
+			{
+				type =  form
+				form = Task
+				record event = on edit
+
+				field rules
+				{
+					actions 
+					{
+						show Time_Log;
+					}
+				}
+
+			}
+			Set_Employee as "Set Employee"
+			{
+				type =  form
+				form = Timesheet
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											employee = Employee[Email == zoho.loginuserid].ID;
+										input.Employee = employee;
+										//
+										//hide Employee;
+										//hide Task_ID;
+						)
+					}
+				}
+
+			}
+			Hide_Fields1 as "Hide Fields"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Stage;
+					}
+				}
+
+			}
+			Set_Employee1 as "Set Employee"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											employee = Employee[Email == zoho.loginuserid].ID;
+										input.Time_Log.Employee = employee;
+										//
+										disable Time_Log.Employee;
+						)
+					}
+				}
+
+			}
+			Send_Notify_Task as "Send Notify Task"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											res = zoho.pushNotification("assetmanagementsyngrid2@gmail.com","Test","Hiii This is Test","All_Tasks",input.ID);
+										info res;
+						)
+					}
+				}
+
+			}
+			Set_Employee2 as "Set Employee"
+			{
+				type =  form
+				form = Task
+				record event = on edit
+
+				on add row of Time_Log
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											employee = Employee[Email == zoho.loginuserid].ID;
+										row.Employee=employee;
+						)
+					}
+				}
+
+			}
+			Block_Empty_Task_Submissi as "Block Empty Task Submission"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Task_Title == null || input.Task_Title.trim().isEmpty())
+										{
+											alert "Task cannot be submitted without filling TaskTitle details.";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Block_Empty_Project_Submi as "Block Empty Project Submission"
+			{
+				type =  form
+				form = Project
+				record event = on add
+					status = inactive
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Project_Name == null || input.Project_Name.trim().isEmpty())
+										{
+											alert "Project cannot be submitted without filling ProjectName details.";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Fields2 as "Hide Fields"
+			{
+				type =  form
+				form = Client
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Stage,Client_ID;
+					}
+				}
+
+			}
+			Hide_Fields3 as "Hide Fields"
+			{
+				type =  form
+				form = Employee
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Stage;
+					}
+				}
+
+			}
+			Set_Status as "Set Status"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				on add row of Time_Log
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Status=input.Status;
+						)
+					}
+				}
+
+			}
+			Update_End_Date as "Update End Date"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				on user input of Status
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Status == "Completed")
+										{
+											input.Actual_End_Date = zoho.currentdate;
+										}
+						)
+					}
+				}
+
+			}
+			Check_Task_Date as "Check Task Date"
+			{
+				type =  form
+				form = Timesheet
+				record event = on add or edit
+					status = inactive
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// task = Task[ID == Task_ID.toLong()];
+										// if(zoho.currentdate > task.Work_End_Date)
+										// {
+										// 	openUrl("#Form:Reason?Timesheet_ID=" + input.ID,"popup window");
+										// }
+						)
+					}
+				}
+
+			}
+			test as "test"
+			{
+				type =  form
+				form = Time
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											data = Map();
+										sample = Map();
+										valuemap = Map();
+										valuemap.put("Time",'11:11');
+										list = List();
+										list.add(valuemap);
+										data.put("Checkin",list);
+										res = zoho.creator.updateRecord("syngridsss","syngrid-project-management","All_Time",316157000000111047,data,sample,"zoho_creator_connection");
+										info res;
+						)
+					}
+				}
+
+			}
+			Hide_Task_ID as "Hide Task ID"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Task_ID;
+					}
+				}
+
+			}
+			Disable_Project as "Disable Project"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Project;
+					}
+				}
+
+			}
+			Create_Client_ID as "Create Client ID"
+			{
+				type =  form
+				form = Client
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Client_ID = "CLT-" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Create_Task_ID as "Create Task ID"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Task_ID = "TK-" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Set_Assigned_By as "Set Assigned By"
+			{
+				type =  form
+				form = Task
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											emplyee = Employee[Email == zoho.loginuserid];
+										input.Assigned_By = emplyee.ID;
+						)
+					}
+				}
+
+			}
+			Hide_Date as "Hide Date"
+			{
+				type =  form
+				form = Task
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Work_Start_Date,Work_End_Date;
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Auto_Checkout as "Auto Checkout"
+			{
+				type =  schedule
+					status = inactive
+				start = "2025-09-01 22:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+				}
+			}
+		}
+
+
+
+
+		functions
+		{
+			Add_Task as "Add Task"
+			{
+				type =  functions
+				form = Project
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Task?Project=" + input.ID,"same window");
+					)
+					}
+				}
+			}
+			Add_Timesheet as "Add Timesheet"
+			{
+				type =  functions
+				form = Task
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Report:All_Tasks?ID=" + input.ID,"same window");
+					)
+					}
+				}
+			}
+			restore as "restore"
+			{
+				type =  functions
+				form = Project
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Active";
+					)
+					}
+				}
+			}
+			Delete_Project as "Delete Project"
+			{
+				type =  functions
+				form = Project
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Trash";
+					)
+					}
+				}
+			}
+			Delete_Task as "Delete Task"
+			{
+				type =  functions
+				form = Task
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Trash";
+					)
+					}
+				}
+			}
+			Delete_Employee as "Delete Employee"
+			{
+				type =  functions
+				form = Employee
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Trash";
+					)
+					}
+				}
+			}
+			Restore1 as "Restore"
+			{
+				type =  functions
+				form = Employee
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Active";
+					)
+					}
+				}
+			}
+			Restore2 as "Restore"
+			{
+				type =  functions
+				form = Task
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Active";
+					)
+					}
+				}
+			}
+			Delete_Client as "Delete Client"
+			{
+				type =  functions
+				form = Client
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Trash";
+					)
+					}
+				}
+			}
+			Delete_Project1 as "Delete Project"
+			{
+				type =  functions
+				form = Project
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Stage = "Trash";
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Read & write Employee"
+			{
+				name = "Read & write Employee"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+				ModulePermissions
+				{
+					Project
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Project_Status={"View"}
+							My_Project_Report={"View"}
+						}
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						ReportPermissions
+						{
+							My_Task={"View","Edit","Delete"}
+							All_Tasks={"View"}
+						}
+						FieldPermissions
+						{
+							Status{visibility:true,readonly:false}
+							Task_Information{visibility:false,readonly:false}
+							Description{visibility:true,readonly:false}
+							Priority{visibility:true,readonly:false}
+							Task_Title{visibility:true,readonly:false}
+							Estimated_Hours{visibility:true,readonly:false}
+							Auto_Number{visibility:true,readonly:false}
+							Task_ID{visibility:true,readonly:false}
+							Section{visibility:false,readonly:false}
+							Attachments{visibility:true,readonly:false}
+							Project{visibility:true,readonly:false}
+							Actual_End_Date{visibility:true,readonly:true}
+							Work_Start_Date{visibility:true,readonly:false}
+							Assigned_By{visibility:true,readonly:false}
+							Select1{visibility:false,readonly:false}
+							Assigned_Employee{visibility:true,readonly:true}
+							Section2{visibility:false,readonly:false}
+							Select{visibility:false,readonly:false}
+							Stage{visibility:true,readonly:false}
+							Work_End_Date{visibility:true,readonly:false}
+							Actual_Start_Date{visibility:true,readonly:true}
+							Time_Log{visibility:true,readonly:false}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Team_Lead={"View"}
+							All_Employees={"View"}
+							Managers={"View"}
+						}
+					}
+					Position
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Positions={"View"}
+						}
+					}
+					Timesheet
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Timesheet_Report={"View"}
+						}
+					}
+					Time
+					{
+						allFieldsVisible= true 
+					}
+					Client
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Clients={"View"}
+						}
+					}
+					Department1
+					{
+						allFieldsVisible= true 
+					}
+					Employee_Dashboard
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Team Lead Permissions"
+			{
+				name = "Team Lead Permissions"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Team Lead Permissions Profile\n"
+				ModulePermissions
+				{
+					Project
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Project_Status={"View","Edit","Delete"}
+							My_Project_Report={"View","Edit","Delete"}
+							Trash_Project={"View","Edit","Delete"}
+							All_Project={"View","Edit","Delete"}
+						}
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Task_Lead_form_report={"View","Edit","Delete"}
+							All_Tasks={"View","Edit","Delete"}
+							My_Task={"View","Edit","Delete"}
+							Trash_Task={"View","Edit","Delete"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Team_Lead={"View","Edit","Delete"}
+							All_Employees={"View","Edit","Delete"}
+							Managers={"View","Edit","Delete"}
+							Trash_Employee={"View","Edit","Delete"}
+						}
+					}
+					Position
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Positions={"View","Edit","Delete"}
+						}
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Timesheet={"View","Edit","Delete"}
+							Timesheet_Report={"View","Edit","Delete"}
+							Zoho_Team_Report={"View","Edit","Delete"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Time={"View","Edit","Delete"}
+						}
+					}
+					Client
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Clients={"View","Edit","Delete"}
+							Trash_Client={"View","Edit","Delete"}
+						}
+					}
+					Department1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Department={"View","Edit","Delete"}
+						}
+					}
+					Dashboard
+					{
+						enabled = tab
+					}
+					Project_Dashboard
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Manager Permissions"
+			{
+				name = "Manager Permissions"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manager Permissions Profile\n"
+				ModulePermissions
+				{
+					Project
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Project_Status={"View","Edit","Delete"}
+							My_Project_Report={"View","Edit","Delete"}
+							Trash_Project={"View","Edit","Delete"}
+							All_Project={"View","Edit","Delete"}
+						}
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Task_Lead_form_report={"View","Edit","Delete"}
+							All_Tasks={"View","Edit","Delete"}
+							My_Task={"View","Edit","Delete"}
+							Trash_Task={"View","Edit","Delete"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Team_Lead={"View","Edit","Delete"}
+							All_Employees={"View","Edit","Delete"}
+							Managers={"View","Edit","Delete"}
+							Trash_Employee={"View","Edit","Delete"}
+						}
+					}
+					Position
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Positions={"View","Edit","Delete"}
+						}
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Timesheet={"View","Edit","Delete"}
+							Timesheet_Report={"View","Edit","Delete"}
+							Zoho_Team_Report={"View","Edit","Delete"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Time={"View","Edit","Delete"}
+						}
+					}
+					Client
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						ReportPermissions
+						{
+							All_Clients={"View","Edit","Delete"}
+							Trash_Client={"View","Edit","Delete"}
+						}
+						FieldPermissions
+						{
+							Client_Name{visibility:true,readonly:false}
+							Email{visibility:true,readonly:false}
+							Address{visibility:true,readonly:false}
+							Stage{visibility:true,readonly:false}
+							Contact_Person{visibility:true,readonly:false}
+							Company_Name{visibility:true,readonly:false}
+							Phone_Number{visibility:true,readonly:false}
+							Client_ID{visibility:true,readonly:false}
+							Auto_Number{visibility:false,readonly:false}
+							Section{visibility:false,readonly:false}
+						}
+					}
+					Department1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Department={"View","Edit","Delete"}
+						}
+					}
+					Dashboard
+					{
+						enabled = tab
+					}
+					Project_Dashboard
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Team Leader"
+			{
+				name = "Team Leader"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Team Leader Profile - Pending\n"
+				ModulePermissions
+				{
+					Shift
+					{
+						allFieldsVisible= true 
+					}
+					Project
+					{
+						allFieldsVisible= true 
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							My_Task={"View","Edit"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Position
+					{
+						allFieldsVisible= true 
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Timesheet_Report={"View","Edit"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Client
+					{
+						allFieldsVisible= true 
+					}
+					Department1
+					{
+						allFieldsVisible= true 
+					}
+					Reason
+					{
+						allFieldsVisible= true 
+					}
+					Attendance
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Admin"
+			{
+				name = "Admin"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Admin Profile\n"
+				ModulePermissions
+				{
+					Shift
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Shifts={"View","Edit"}
+						}
+					}
+					Project
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Project_Status={"View"}
+							My_Project_Report={"View","Edit"}
+							Trash_Project={"View","Edit"}
+							All_Project={"View","Edit"}
+						}
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Tasks={"View","Edit"}
+							My_Task={"View","Edit"}
+							Trash_Task={"View","Edit"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Team_Lead={"View"}
+							All_Employees={"View","Edit"}
+							Managers={"View","Edit"}
+							Trash_Employee={"View","Edit"}
+						}
+					}
+					Position
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Positions={"View","Edit"}
+						}
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Timesheet={"View","Edit"}
+							Timesheet_Report={"View","Edit"}
+							Zoho_Team_Report={"View","Edit"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Time={"View","Edit"}
+							All_Employee_Attendance={"View","Edit"}
+						}
+					}
+					Client
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Clients={"View","Edit"}
+							Trash_Client={"View","Edit"}
+						}
+					}
+					Department1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Department={"View","Edit"}
+						}
+					}
+					Reason
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Dashboard
+					{
+						enabled = tab
+					}
+					Project_Dashboard
+					{
+						enabled = tab
+					}
+					Employee_Dashboard
+					{
+						enabled = tab
+					}
+					taskboard
+					{
+						enabled = tab
+					}
+					Attendance
+					{
+						enabled = tab
+					}
+					Test
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Team Member"
+			{
+				name = "Team Member"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Team Member Profile - Pending\n"
+				ModulePermissions
+				{
+					Shift
+					{
+						allFieldsVisible= true 
+					}
+					Project
+					{
+						allFieldsVisible= true 
+					}
+					Task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							My_Task={"View","Edit"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Position
+					{
+						allFieldsVisible= true 
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Timesheet={"View","Edit"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Viewall,Modifyall,Import,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Time={"View","Edit"}
+						}
+					}
+					Client
+					{
+						allFieldsVisible= true 
+					}
+					Department1
+					{
+						allFieldsVisible= true 
+					}
+					Reason
+					{
+						allFieldsVisible= true 
+					}
+					Employee_Dashboard
+					{
+						enabled = tab
+					}
+					Attendance
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+				ModulePermissions
+				{
+					Project
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Project_Status={"View"}
+							My_Project_Report={"View"}
+							Trash_Project={"View"}
+							All_Project={"View"}
+						}
+					}
+					Task
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Task_Lead_form_report={"View"}
+							All_Tasks={"View"}
+							My_Task={"View"}
+							Trash_Task={"View"}
+						}
+					}
+					Employee
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Team_Lead={"View"}
+							All_Employees={"View"}
+							Managers={"View"}
+							Trash_Employee={"View"}
+						}
+					}
+					Position
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Positions={"View"}
+						}
+					}
+					Timesheet
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Timesheet={"View"}
+							Timesheet_Report={"View"}
+							Zoho_Team_Report={"View"}
+						}
+					}
+					Time
+					{
+						enabled= Create,Viewall,Modifyall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Time={"View","Edit"}
+						}
+					}
+					Client
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Clients={"View"}
+							Trash_Client={"View"}
+						}
+					}
+					Department1
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Department={"View"}
+						}
+					}
+					Reason
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+					}
+					Dashboard
+					{
+						enabled = tab
+					}
+					Project_Dashboard
+					{
+						enabled = tab
+					}
+					Employee_Dashboard
+					{
+						enabled = tab
+					}
+					taskboard
+					{
+						enabled = tab
+					}
+					Attendance
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Manger"
+			{
+				name = "Manger"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manger Profile - Pending\n"
+				ModulePermissions
+				{
+					Shift
+					{
+						allFieldsVisible= true 
+					}
+					Project
+					{
+						allFieldsVisible= true 
+					}
+					Task
+					{
+						allFieldsVisible= true 
+					}
+					Employee
+					{
+						allFieldsVisible= true 
+					}
+					Position
+					{
+						allFieldsVisible= true 
+					}
+					Timesheet
+					{
+						allFieldsVisible= true 
+					}
+					Time
+					{
+						allFieldsVisible= true 
+					}
+					Client
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Department1
+					{
+						allFieldsVisible= true 
+					}
+					Reason
+					{
+						allFieldsVisible= true 
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Team Lead"
+					{
+						description = ""
+						"Employee"
+						{
+							description = ""
+						}
+					}
+					"Manager"
+					{
+						description = ""
+					}
+				}
+			}
+			role Hierarchy = {Task}
+	}
+
+	customize
+	{
+		icon
+		{
+			image = "image_1758606692216.png"
+		}
+	}
+
+	connections
+	{
+		zoho_creator_connection
+		(
+			displayname = "Zoho Creator Connection"
+			connector = zohocreator
+			permissions = {"bulk_delete_records","bulk_update_records","create_record","delete_record","download_bulk_read_result","download_file","download_file_from_subform","execute_ai_skill","execute_custom_api","get_all_records","get_applications","get_applications_by_workspace","get_fields","get_forms","get_pages","get_record","get_reports","get_sections","get_the_status_of_the_bulk_read_job","search_record","update_record","upload_file","zc_connector"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Client
+			{
+				label placement = left
+			}
+			form Department1
+			{
+				label placement = left
+			}
+			form Employee
+			{
+				label placement = left
+			}
+			form Position
+			{
+				label placement = left
+			}
+			form Project
+			{
+				label placement = left
+			}
+			form Reason
+			{
+				label placement = left
+			}
+			form Shift
+			{
+				label placement = left
+			}
+			form Task
+			{
+				label placement = left
+			}
+			form Time
+			{
+				label placement = left
+			}
+			form Timesheet
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report My_Project_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Project_ID as "Project ID"
+								Project_Name as "Project Name"
+								Priority
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Status
+								"Add Task"
+								Added_User as "Added User"
+								Task_Task_Title as "Task - Task Title"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Project"
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Add Task"
+							"Delete Project"
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Project_ID as "Project ID"
+								Project_Name as "Project Name"
+								Description
+								Status
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Priority
+								Attachments as "Attachments "
+								Project_Manager as "Project Manager"
+								Assigned_To_Team_Lead as "Assigned To Team Lead"
+								"Add Task"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+			 				"Add Task"
+    	 				)
+    				)
+				)
+			}
+			report All_Employees
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Department
+								Position
+								Role
+								Shift
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Employee"
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Delete Employee"
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Email
+								Employee_ID as "Employee ID"
+								Role
+								Position
+								Department
+								Shift
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Employee"
+    	 				)
+    				)
+				)
+			}
+			report All_Tasks
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Status
+								Assigned_Employee as " Assigned To"
+								Project
+								Estimated_Hours as "Estimated Hours"
+								ID
+								Actual_Start_Date as "Start Date"
+								Actual_End_Date as "End Date"
+								Description
+								Auto_Number as "Auto Number"
+								Work_Start_Date as "Start Date1"
+								Work_End_Date as "End Date1"
+								Time_Log.Auto_Number as "Time Log"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Task_Title as "Task Title"
+								Description
+								Task_ID as "Task ID"
+								Status
+								Actual_Start_Date as "Start Date"
+								Actual_End_Date as "End Date"
+								Assigned_Employee as " Assigned To"
+								Time_Log.Auto_Number as "Time Log"
+								Priority
+								Auto_Number as "Auto Number"
+								Estimated_Hours as "Estimated Hours"
+								Attachments
+								Project
+								"View Task"
+								Assigned_By as "Assigned By"
+								Work_End_Date as "End Date1"
+								Work_Start_Date as "Start Date1"
+								Select
+								Select1 as "Select"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+			 				"View Task"
+    	 				)
+    				)
+				)
+			}
+			report All_Positions
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Add_Position as "Add Position"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Add_Position as "Add Position"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Clients
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Client_ID as "Client ID"
+								Client_Name as "Client Name"
+								Email
+								Company_Name as "Company Name"
+								Phone_Number as "Phone"
+								Address
+								Contact_Person as "Contact Person "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Client"
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Delete Client"
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Client_Name as "Client Name"
+								Email
+								Phone_Number as "Phone"
+								Address
+								Company_Name as "Company Name"
+								Contact_Person as "Contact Person "
+								Client_ID as "Client ID"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Client"
+    	 				)
+    				)
+				)
+			}
+			report Timesheet_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Employee
+								Date_field as "Date"
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Employee
+								Date_field as "Date"
+								Hour
+								Minutes
+								Notes
+								Status
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Project_Status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+							fields
+							(
+								Project_Name as "Project Name"
+								Project_ID as "Project ID"
+								Start_Date as "Start Date"
+								Status
+								End_Date as "End Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Project_ID as "Project ID"
+								Project_Name as "Project Name"
+								Client
+								Project_Manager as "Project Manager"
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Status
+								Priority
+								Budget
+								Description
+								Attachments as "Attachments "
+								Stage
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Managers
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Role
+								Position
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Role
+								Position
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Team_Lead
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Role
+								Position
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Role
+								Position
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Timesheet
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Status
+								Employee
+								Date_field as "Date"
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Date_field as "Date"
+								Employee
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Department
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Department_Name as "Department Name"
+								ID
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Department_Name as "Department Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Zoho_Team_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Status
+								Employee
+								Date_field as "Date"
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Date_field as "Date"
+								Employee
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Trash_Project
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Task_Task_Title as "Task - Task Title"
+								Auto_Number as "Auto Number"
+								Project_ID as "Project ID"
+								Client
+								Project_Name as "Project Name"
+								Project_Manager as "Project Manager"
+								Assigned_To_Team_Lead as "Assigned To Team Lead"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Restore"
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Restore"
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Task_Task_Title as "Task - Task Title"
+								Auto_Number as "Auto Number"
+								Project_ID as "Project ID"
+								Client
+								Project_Name as "Project Name"
+								Project_Manager as "Project Manager"
+								Assigned_To_Team_Lead as "Assigned To Team Lead"
+								Start_Date as "Start Date"
+								Stage
+								Status
+								Priority
+								Budget
+								Attachments as "Attachments "
+								End_Date as "End Date"
+								Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Project
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Project_ID as "Project ID"
+								Project_Name as "Project Name"
+								Priority
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Status
+								Added_User as "Added User"
+								Stage
+								Task_Task_Title as "Task - Task Title"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Project"
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Delete Project"
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Task_Task_Title as "Task - Task Title"
+								Auto_Number as "Auto Number"
+								Project_ID as "Project ID"
+								Client
+								Project_Name as "Project Name"
+								Project_Manager as "Project Manager"
+								Assigned_To_Team_Lead as "Assigned To Team Lead"
+								Start_Date as "Start Date"
+								Status
+								Priority
+								Budget
+								Attachments as "Attachments "
+								End_Date as "End Date"
+								Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Project"
+    	 				)
+    				)
+				)
+			}
+			report Trash_Task
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Project
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Assigned_Employee as " Assigned To"
+								Actual_Start_Date as "Start Date"
+								Priority
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Restore"
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Restore"
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Project
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Assigned_Employee as " Assigned To"
+								Actual_Start_Date as "Start Date"
+								Priority
+								Status
+								Actual_End_Date as "End Date"
+								Description
+								Estimated_Hours as "Estimated Hours"
+								Attachments
+								Stage
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Trash_Employee
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Department
+								Role
+								Position
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Restore"
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Restore"
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Name
+								Email
+								Phone_Number as "Phone"
+								Department
+								Role
+								Position
+								Stage
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report My_Task
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Priority
+								Actual_Start_Date as "Start Date"
+								Actual_End_Date as "End Date"
+								Status
+								Project
+								Assigned_By as "Assigned By"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Task"
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							"Delete Task"
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Project
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Assigned_Employee as " Assigned To"
+								Actual_Start_Date as "Start Date"
+								Priority
+								Status
+								Actual_End_Date as "End Date"
+								Description
+								Estimated_Hours as "Estimated Hours"
+								Attachments
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+			 				"Delete Task"
+    	 				)
+    				)
+				)
+			}
+			report Trash_Client
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Client_ID as "Client ID"
+								Client_Name as "Client Name"
+								Company_Name as "Company Name"
+								Email
+								Phone_Number as "Phone"
+								Address
+								Contact_Person as "Contact Person "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Client_ID as "Client ID"
+								Client_Name as "Client Name"
+								Company_Name as "Company Name"
+								Email
+								Phone_Number as "Phone"
+								Address
+								Contact_Person as "Contact Person "
+								Stage
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Task_Lead_form_report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Project
+								Assigned_Employee as " Assigned To"
+								Actual_Start_Date as "Start Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Project
+								Task_ID as "Task ID"
+								Task_Title as "Task Title"
+								Assigned_Employee as " Assigned To"
+								Actual_Start_Date as "Start Date"
+								Priority
+								Status
+								Actual_End_Date as "End Date"
+								Description
+								Estimated_Hours as "Estimated Hours"
+								Attachments
+								Stage
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Time
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Email
+								Dates as "Date"
+								Checkin.Time as "Checkin"
+								Checkout.Time as "Checkout"
+								Name
+								ID
+								First_Checkin as "First Checkin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Dates as "Date"
+								Name
+								Checkin.Time as "Checkin"
+								Checkout.Time as "Checkout"
+								Email
+								First_Checkin as "First Checkin"
+								Last_Checkout as "Last Checkout"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Attendance
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Email
+								Dates as "Date"
+								Checkin.Time as "Checkin"
+								Checkout.Time as "Checkout"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Dates as "Date"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Shifts
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Shift_Name as "Shift Name"
+								End_Time as "End Time"
+								Start_Time as "Start Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Shift_Name as "Shift Name"
+								End_Time as "End Time"
+								Start_Time as "Start Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report My_Timesheet
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Timesheet_Name as "Timesheet Name"
+								Status
+								Employee
+								Date_field as "Date"
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Auto_Number as "Auto Number"
+								Timesheet_Name as "Timesheet Name"
+								Status
+								Date_field as "Date"
+								Employee
+								Hour
+								Minutes
+								Notes
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			unused
+			{
+				form  Time
+				{
+					icon = "users-2-a-time"
+				}
+				report All_Time
+				{
+					icon = "tech-desktop"
+				}
+				form  Reason
+				{
+					icon = "tech-desktop"
+				}
+				systemcomponent
+				{
+					type = approval
+					approval status = pending
+					displayname = "Pending Tasks"
+					icon = "ui-2-hourglass"
+				}
+				systemcomponent
+				{
+					type = approval
+					approval status = completed
+					displayname = "Completed Tasks"
+					icon = "design-todo"
+				}
+				systemcomponent
+				{
+					type = localization
+					displayname = "Language Selection"
+					icon = "education-language"
+				}
+				systemcomponent
+				{
+					type = connection
+					displayname = "Integrations"
+					icon = "tech-2-connection"
+				}
+				form  Department1
+				{
+					icon = "users-multiple-11"
+				}
+				report All_Department
+				{
+					icon = "users-multiple-11"
+				}
+				form  Position
+				{
+					icon = "users-single-position"
+				}
+				report All_Positions
+				{
+					icon = "location-position-user"
+				}
+				form  Shift
+				{
+					icon = "business-coins"
+				}
+				report All_Shifts
+				{
+					icon = "tech-desktop"
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			space Space
+			{
+				displayname = "Space"
+				icon = "tech-desktop"
+
+				section Project
+				{
+					displayname = "Project"
+					icon = "education-books-46"
+					page Project_Dashboard
+					{
+						icon = "tech-desktop"
+					}
+					form  Project
+					{
+						icon = "tech-laptop"
+					}
+					report My_Project_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report Project_Status
+					{
+						icon = "arrows-1-bold-direction"
+					}
+					report All_Project
+					{
+						icon = "education-books-46"
+					}
+				}
+				section Time
+				{
+					displayname = "Time"
+					icon = "users-2-a-time"
+					page Attendance
+					{
+						icon = "users-2-voice-record"
+					}
+					page Test
+					{
+						icon = "education-flask"
+					}
+					report All_Employee_Attendance
+					{
+						icon = "users-2-a-time"
+					}
+				}
+				section Tasks
+				{
+					displayname = "Tasks"
+					icon = "business-notes"
+					form  Task
+					{
+						icon = "design-todo"
+					}
+					report All_Tasks
+					{
+						icon = "business-board-30"
+					}
+					report My_Task
+					{
+						icon = "design-todo"
+					}
+					report Task_Lead_form_report
+					{
+						icon = "design-todo"
+					}
+				}
+				section Timesheet
+				{
+					displayname = "Timesheet"
+					icon = "users-2-a-time"
+					form  Timesheet
+					{
+						icon = "ui-1-calendar-grid-61"
+					}
+					report Timesheet_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report All_Timesheet
+					{
+						icon = "tech-2-p-time"
+					}
+					report Zoho_Team_Report
+					{
+						icon = "users-multiple-11"
+					}
+					report My_Timesheet
+					{
+						icon = "sport-kettlebell"
+					}
+				}
+				section Employees
+				{
+					displayname = "Employees"
+					icon = "users-single-04"
+					form  Employee
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Employees
+					{
+						icon = "tech-desktop"
+					}
+					report Managers
+					{
+						icon = "business-businessman-03"
+					}
+					report Team_Lead
+					{
+						icon = "business-business-contact-89"
+					}
+				}
+				section Clients
+				{
+					displayname = "Clients"
+					icon = "users-multiple-19"
+					form  Client
+					{
+						icon = "users-circle-10"
+					}
+					report All_Clients
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Trash
+				{
+					displayname = "Trash"
+					icon = "ui-1-trash-round"
+					report Trash_Project
+					{
+						icon = "education-grammar-check"
+					}
+					report Trash_Task
+					{
+						icon = "design-todo"
+					}
+					report Trash_Employee
+					{
+						icon = "business-business-contact-89"
+					}
+					report Trash_Client
+					{
+						icon = "users-circle-10"
+					}
+				}
+				section Dashboard
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page Dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+					page Employee_Dashboard
+					{
+						icon = "business-business-contact-89"
+					}
+					page taskboard
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+					show = {section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				menu color = "#043c78"
+				header color = "#043c78"
+				name = "custom_color"
+				brand color = "#043c78"
+				type = "custom"
+				sub menu color = "#061a30"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Client
+			{
+				label placement = auto
+			}
+			form Department1
+			{
+				label placement = auto
+			}
+			form Employee
+			{
+				label placement = auto
+			}
+			form Position
+			{
+				label placement = auto
+			}
+			form Project
+			{
+				label placement = auto
+			}
+			form Reason
+			{
+				label placement = auto
+			}
+			form Shift
+			{
+				label placement = auto
+			}
+			form Task
+			{
+				label placement = auto
+			}
+			form Time
+			{
+				label placement = auto
+			}
+			form Timesheet
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Client
+			{
+				label placement = auto
+			}
+			form Department1
+			{
+				label placement = auto
+			}
+			form Employee
+			{
+				label placement = auto
+			}
+			form Position
+			{
+				label placement = auto
+			}
+			form Project
+			{
+				label placement = auto
+			}
+			form Reason
+			{
+				label placement = auto
+			}
+			form Shift
+			{
+				label placement = auto
+			}
+			form Task
+			{
+				label placement = auto
+			}
+			form Time
+			{
+				label placement = auto
+			}
+			form Timesheet
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

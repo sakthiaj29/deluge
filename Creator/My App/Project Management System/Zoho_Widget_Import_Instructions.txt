@@ -1,0 +1,32 @@
+First, you need to create an application in Zoho Creator by importing the .ds file.  
+
+After creating the app,  
+you can import the 2 widgets (separately) into the Widgets module.  
+
+---
+
+### Either of the 2 Methods:
+
+#### Method 1: Internal Hosting
+1. Name your Widget  
+2. Select Hosting as Internal 
+3. Add the widget using the zip folder (you can find it inside the dist folder)  
+4. Then click Create
+
+---
+
+#### Method 2: External Hosting
+1. Name your Widget  
+2. Select Hosting as External  
+3. Paste your weblink in the Index File (you can run the code in localhost and copy the link)  
+4. Then click Create
+(before do copy and paste node_modules folder in each Widget folders )
+---
+
+Select the widget on the concurrent page (like Project Dashboard) under Modules and click Save.  
+
+---
+
+### Note:
+You can find the Widget Module inside the Settings of your application.  
+Path: Edit this application → Settings → Widgets

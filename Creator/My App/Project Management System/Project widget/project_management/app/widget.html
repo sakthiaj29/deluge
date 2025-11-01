@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="caret-tooltip.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Project Dashboard</h1>
+
+ <!-- Stats Section -->
+<div class="stats-grid">
+  <div class="stat-card fancy orange">
+    <div class="stat-header">
+      <span>Total Projects</span>
+    </div>
+    <h2 id="totalProjects">0</h2>
+    <p>Overall projects count</p>
+  </div>
+
+  <div class="stat-card fancy green">
+    <div class="stat-header">
+      <span>Completed Projects</span>
+    </div>
+    <h2 id="completedProjects">0</h2>
+    <p>Projects finished</p>
+  </div>
+
+  <div class="stat-card fancy blue">
+    <div class="stat-header">
+      <span>Active Projects</span>
+    </div>
+    <h2 id="activeProjects">0</h2>
+    <p>Currently ongoing</p>
+  </div>
+
+  <div class="stat-card fancy purple">
+    <div class="stat-header">
+      <span>In Testing</span>
+    </div>
+    <h2 id="testingProjects">0</h2>
+    <p>Under QA review</p>
+  </div>
+</div>
+
+
+    <!-- Export Button -->
+    <button id="exportProjects" class="export-btn">Export Projects CSV</button>
+
+    <!-- Projects Grid -->
+     <h3>All Project</h3>
+    <div id="projectsContainer" class="projects-grid"></div>
+  </div>
+
+  <!-- Popup -->
+  <div id="projectPopup" class="popup">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2 id="popupProjectTitle"></h2>
+
+      <h3>Project Details</h3>
+      <div id="projectDetails" class="project-details"></div>
+
+      <h3>Tasks</h3>
+      <div id="tasksContainer"></div>
+    </div>
+  </div>
+
+  <script src="https://js.zohostatic.in/creator/widgets/version/2.0/widgetsdk-min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

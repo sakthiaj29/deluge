@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2s Hold Check-in / Check-out</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1 class="title">Hold to Check-in / Check-out</h1>
+
+    <div class="hold" id="hold">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="ring-bg" cx="50" cy="50" r="45" fill="none" stroke-width="8"/>
+        <!-- default class includes 'ring-progress' and 'checkin' -->
+        <circle class="ring-progress checkin" id="progressPath" cx="50" cy="50" r="45" fill="none" stroke-width="8"/>
+      </svg>
+
+      <!-- default button class is checkin (green) -->
+      <button class="btn checkin" id="checkBtn" aria-pressed="false">CHECK-IN</button>
+    </div>
+
+    <div class="status" id="status">Not checked in</div>
+  </div>
+
+   <div id="toast"></div>
+  
+  <script src="https://js.zohostatic.in/creator/widgets/version/2.0/widgetsdk-min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

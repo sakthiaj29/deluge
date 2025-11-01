@@ -1,0 +1,372 @@
+/* -------------------------
+   Base
+------------------------- */
+* { box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: #f5f7fb;
+  color: #333;
+}
+.dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  margin: 10px 0 20px;
+  font-size: 26px;
+  color: #222;
+}
+
+/* -------------------------
+   Stats (matches .stats-grid + .stat-card in your HTML)
+------------------------- */
+/* Fancy Stats Section */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-card.fancy {
+  position: relative;
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card.fancy:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+}
+
+.stat-card.fancy::before,
+.stat-card.fancy::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  background: #fff;
+}
+
+.stat-card.fancy::before {
+  width: 140px;
+  height: 140px;
+  top: -40px;
+  right: -40px;
+}
+
+.stat-card.fancy::after {
+  width: 100px;
+  height: 100px;
+  bottom: -30px;
+  left: -30px;
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.stat-card.fancy h2 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.stat-card.fancy p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Gradient backgrounds */
+.stat-card.orange { background: linear-gradient(135deg,#ff9a9e,#d85d16); }
+.stat-card.blue   { background: linear-gradient(135deg,#4facfe,#0061ff); }
+.stat-card.green  { background: linear-gradient(135deg,#43e97b,#01bf40); }
+.stat-card.purple { background: linear-gradient(135deg,#9d50bb,#6e48aa); }
+
+.icon {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+
+/* -------------------------
+   Export button
+------------------------- */
+.export-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(40,167,69,0.25);
+  transition: background .2s, transform .1s;
+}
+.export-btn:hover { background: #218838; }
+.export-btn:active { transform: translateY(1px); }
+
+/* -------------------------
+   Projects grid + cards
+------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 18px;
+}
+.project-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, border .2s, background .2s;
+  border: 2px solid transparent;
+  text-align: left;
+}
+.name-truncate{
+  width: 16ch;              
+    white-space: nowrap;       
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.project-card h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.project-card p { margin: 6px 0; color: #555; }
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+#projectDetails{
+  background-color: #f9f9ff;
+  border-radius: 5px;
+  margin-right: 202;
+}
+
+.no-projects{
+  text-align:center;
+  padding:28px 12px;
+  color:#555;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 20px;
+}
+
+/* Status colors */
+.status-badge.Active   { background: #007bff; }   /* Blue */
+.status-badge.InProgress   { background: #000080; }   /* Navy */
+.status-badge.OnHold { background: #d3cc01; }      /* Yellow */
+.status-badge.Completed { background: #28a745; }   /* Green */
+.status-badge.InTesting { background: #9b5cff; }   /* Purple */
+.status-badge.Delayed   { background: #fd7e14; }   /* Orange */
+.status-badge.Cancelled { background: #f61d24; }   /* Red */
+
+
+/* Optional hover accents by status (if you add status as a class on the card) */
+.project-card.Active:hover      { border-color:#007bff; background:#eaf2ff; }
+.project-card.InProgress:hover  { border-color: #000080;background: #f0f4ff; }
+.project-card.OnHold:hover   { border-color:#d2d200; background:#fffff0; }
+.project-card.Completed:hover   { border-color:#28a745; background:#eafbea; }
+.project-card.InTesting:hover   { border-color:#9b5cff; background:#f7f2ff; }
+.project-card.Delayed:hover     { border-color:#fd7e14; background:#fff4ea; }
+.project-card.Cancelled:hover   { border-color:#f61d24; background:#fff1f0; }
+
+
+.circle-container{
+  display: flex;
+  justify-content: flex-end; 
+}
+ .circle-wrap{ width:70px; height:70px; position:relative; }
+    .circle-label{
+      position:absolute; inset:0;
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+    }
+    .percent{ font-size:16px; font-weight:bold; }
+    svg circle{ fill:none; stroke-width:14; }
+    .bg{ stroke:#e6eef7; }
+    .progress{ stroke:#0072FF; stroke-linecap:round; transition:stroke-dashoffset .6s ease; }
+
+/* -------------------------
+   Popup
+------------------------- */
+.popup {
+  display: none;           
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.popup-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeIn .25s ease;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #666;
+}
+@keyframes fadeIn {
+  from { opacity:0; transform: scale(0.98); }
+  to   { opacity:1; transform: scale(1); }
+}
+
+/* -------------------------
+   Task list inside popup
+------------------------- */
+.no-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5px 5px;
+  min-height: 200px; /* makes sure it looks centered inside popup */
+}
+
+.no-task img {
+  width: 120px;
+  height: auto;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.no-task p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+}
+
+.task-card {
+  background: #f9f9ff;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: background .2s;
+}
+.task-card:hover { background: #eef0ff; }
+.task-title {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-details {
+  margin-top: 10px;
+  padding: 10px;
+  border-left: 3px solid #666;
+  display: none;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+}
+.employee-entry {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f5f7fb;
+}
+.status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+/* Task status colors */
+.status.Open { background:#fff3cd; color:#856404; }
+.status.InProgress { background:#cce5ff; color:#004085; }
+.status.Completed { background:#d4f8d4; color:#2b7a2b; }
+.status.ToBeTesting { background:#e2e3ff; color:#383d8b; }
+.status.OnHold { background:#f8d7da; color:#721c24; }
+.status.Closed { background:#e2e3e5; color:#383d41; }
+
+.caret {
+      transition: transform 0.3s ease;
+  }
+
+  .caret.rotate {
+      transform: rotate(180deg);
+    }
+
+.project-meta {
+  margin: 10px 0 0;
+  padding: 12px;
+  background: #f9f9ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.project-meta p { margin: 4px 0; }
+
+.task-total {
+  margin-top: 12px;
+  padding: 10px;
+  background: #eef7ff;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #004085;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+}
+.no-data {
+  padding: 10px;
+  background: #fff8e1;
+  border-radius: 8px;
+  color: #7a5b00;
+}
+
+/* -------------------------
+   Responsive
+------------------------- */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+}
