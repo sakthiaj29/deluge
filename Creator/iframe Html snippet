@@ -1,0 +1,6 @@
+<%{
+	%>
+<div style = "padding:15px;font-size:18px;padding:2%;"><b>Monthly Profit</b></div>  <iframe class="back" name='chartFrame' allowTransparency='true' zc_mobileView='inline' zc_Header='false' style="border:none; margin:0px auto; width:100%;box-sizing:border-box; height:800px" src='<%=zoho.appuri%>report-embed/Monthly_Profit?zc_Header=false'></iframe>
+<%
+
+}%>
