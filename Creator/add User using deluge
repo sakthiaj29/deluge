@@ -1,0 +1,1 @@
+thisapp.permissions.assignUserInProfile(input.Email,"Cashier");
